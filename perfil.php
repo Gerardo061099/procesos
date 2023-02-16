@@ -20,11 +20,6 @@
         <h3 class="titulo-principal">Producciones</h3>
     </div>
     <div class="op-usuario">
-        <!--
-        <div class="form-check form-switch" id="switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-        </div>
-        -->
         <div class="dropdown" id="op-user">
             <img src="img/man.png" alt="" class="user-profile">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,7 +35,7 @@
 </nav>
 <div class="container-btn-menu">
     <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-        <img src="img/menu.png" alt="" class="menu">
+    <i class="fa-solid fa-bars"></i>
     </a>
 </div>
 <div>
@@ -53,14 +48,26 @@
     </div>
     <div class="divicion"></div>
     <div class="offcanvas-body">
-        <ul class="menu-lista">
-            <li class="options"><a href="principal.php" class="links"><i class="fa-solid fa-house"></i>  Inicio</a></li>
-            <li class="options"><a href="usuarios_sistema.php" class="links"><i class="fa-solid fa-user"></i>  Administrar Usuarios</a></li>
-            <li class="options"><a href="produccion.php" class="links"><i class="fa-solid fa-list-check"></i>  Gestion de produccion</a></li>
-            <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i>  Resumenes</a></li>
-            <li class="options"><a href="#" class="links"><i class="fa-solid fa-file-invoice-dollar"></i>  Nominas por trabajadores</a></li>
-            <li class="options"><a href="#" class="links"><i class="fa-solid fa-people-group"></i>  Empleados</a></li>
-        </ul>
+    <ul class="menu-lista">
+                <li class="options option-active"><a href="#" class="links"><i class="fa-solid fa-house"></i>  Inicio</a></li>
+                <li class="options"><a href="usuarios_sistema.php" class="links"><i class="fa-solid fa-user"></i>  Administrar usuarios</a></li>
+                <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle');"><i class="fa-solid fa-list-check"></i>  Gestion de produccion  <i class="fa-solid fa-angle-down" id="icon-angle"></i></a></li>
+                    <div class="collapse sub-menu" id="sub-menu">
+                        <ul class="menu-lista">
+                            <li class="options"><a href="produccion.php" class="links"><i class="fa-solid fa-industry"></i>  Producción</a></li>
+                            <li class="options"><a href="#" class="links"><i class="fa-solid fa-cash-register"></i>  Consumos</a></li>
+                            <li class="options"><a href="#" class="links"><i class="fa-regular fa-money-bill-1"></i>  Costos de producción</a></li>
+                        </ul>
+                    </div>
+                <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i>  Resultados de producción</a></li>
+                <li class="options"><a href="#" class="links"><i class="fa-solid fa-file-invoice-dollar"></i>  Nominas</a></li>
+                <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu2" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle2');"><i class="fa-solid fa-people-group"></i>  Empleados  <i class="fa-solid fa-angle-down" id="icon-angle2"></i></a></li>
+                <div class="collapse sub-menu" id="sub-menu2">
+                    <ul class="menu-lista"> 
+                        <li class="options"><a href="#" class="links"><i class="fa-solid fa-chart-column"></i>   Productividad</a></li>
+                    </ul>
+                </div>
+            </ul>
     </div>
     <footer class="footer">
         <div class="container-perfil">

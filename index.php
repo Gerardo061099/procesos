@@ -2,7 +2,7 @@
 include("php/open_session.php");
 ?>
 <!DOCTYPE html>
-<html lang="en">    
+<html lang="es">    
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,26 +18,34 @@ include("php/open_session.php");
         <div class="login-head"><h1>Bienvenido!!</h1></div>
         <div class="linea"></div>
         <div class="container-img"><img src="img/man.png" alt="" class="user-img"></div>
-            <form action="principal.php" method="POST">
+            <form action="principal.php" method="POST" id="frm-logIn">
                 <div class="container-form">
                     <div class="mb-2">
                         <label for="user" class="form-label">Usuario: </label>
-                        <input type="text" class="form-control" id="user" placeholder="anyone56" name="user">
+                        <input type="text" class="form-control" id="user" placeholder="anyone56@mail.com" name="user">
                     </div>
                     <div class="mb-2">
                         <label for="pass" class="form-label">Contraseña: </label>
-                        <input type="password" class="form-control" id="pass" placeholder="********" name="pwd">
+                        <input type="password" class="form-control" id="pass" placeholder="*************" name="pwd">
+                    </div>
+                    <div class="form-check">
+                        <label for="Checkpass" class="form-label">Show password</label>
+                        <input class="form-check-input" type="checkbox" value="" id="Checkpass" onchange="showorhidepass();">
                     </div>
                 </div>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-primary" name="btn1">Enviar</button>
+                    <button class="btn btn-primary" name="btn1" onclick="verifyUser();">Iniciar Sesion</button>
                 </div>
             </form>
         </div>
     </div>
-    <!--CDN swal(sweatalert)-->
+    <script src="https://kit.fontawesome.com/282ec8cabc.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.14/dist/sweetalert2.all.min.js"></script>
+    <script src="js/showorhidepass.js"></script>
+    <script src="js/LocalStorage.js"></script>
+    <script src="js/verifyUser.js"></script>
 </body>
 </html>
 <?php
