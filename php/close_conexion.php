@@ -1,3 +1,3 @@
 <?php
-include("conexion.php");
-mysqli_close($conexion);
+include( 'conexion.php' );
+mysqli_close( $conexion );

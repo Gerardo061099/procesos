@@ -1,6 +1,8 @@
 <?php
-	session_start();
-	ob_start();
-	$_SESSION['sesion_exito']=4;//error 4 cerro sesion exitosamente
-	header('Location: ../index.php');
+session_start();
+session_unset();
+session_destroy();
+
+//error 4 cerro sesion exitosamente
+header( 'Location: ../index.php' );
 ?>

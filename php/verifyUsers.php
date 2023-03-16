@@ -1,7 +1,7 @@
 <?php
 $mail = $_POST[ 'mail' ];
 $password = $_POST[ 'password' ];
-include( 'php/conexion.php' );
+include( 'conexion.php' );
 
 if ( $mail != '' && $password != '' ) {
     $resultado = mysqli_query( $conexion, "SELECT password_user FROM $tb_users WHERE name_user = '$mail'" );
@@ -19,3 +19,4 @@ if ( $mail != '' && $password != '' ) {
 } else {
     echo '0';
 }
+?>

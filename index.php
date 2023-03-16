@@ -1,6 +1,3 @@
-<?php
-include("php/open_session.php");
-?>
 <!DOCTYPE html>
 <html lang="es">    
 <head>
@@ -15,10 +12,10 @@ include("php/open_session.php");
     <div class="barra"></div>
     <div class="container-login">
         <div class="log-in">
-        <div class="login-head"><h1>Bienvenido!!</h1></div>
-        <div class="linea"></div>
-        <div class="container-img"><img src="img/man.png" alt="" class="user-img"></div>
-            <form action="principal.php" method="POST" id="frm-logIn">
+            <div class="login-head"><h1>Bienvenido!!</h1></div>
+            <div class="linea"></div>
+            <div class="container-img"><img src="img/man.png" alt="" class="user-img"></div>
+            <form action="verify_session.php" method="POST" id="frm-logIn">
                 <div class="container-form">
                     <div class="mb-2">
                         <label for="user" class="form-label">Usuario: </label>
@@ -30,11 +27,11 @@ include("php/open_session.php");
                     </div>
                     <div class="form-check">
                         <label for="Checkpass" class="form-label">Show password</label>
-                        <input class="form-check-input" type="checkbox" value="" id="Checkpass" onchange="showorhidepass();">
+                        <input class="form-check-input" type="checkbox" value="" id="Checkpass" onchange="showorhidepass('pass');">
                     </div>
                 </div>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-primary" name="btn1" onclick="verifyUser();">Iniciar Sesion</button>
+                    <button class="btn btn-primary" name="btn1">Iniciar Sesion</button>
                 </div>
             </form>
         </div>
@@ -44,11 +41,10 @@ include("php/open_session.php");
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.14/dist/sweetalert2.all.min.js"></script>
     <script src="js/showorhidepass.js"></script>
-    <script src="js/LocalStorage.js"></script>
-    <script src="js/verifyUser.js"></script>
 </body>
 </html>
 <?php
+session_start();
 if(isset($_SESSION['sesion'])){ 
     if($_SESSION['sesion']==2){//Error de campos vacios
         echo '<script>
@@ -75,8 +71,8 @@ if(isset($_SESSION['sesion'])){
         echo '<script>
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
-              confirmButton: "btn btn-success",
-              cancelButton: "btn btn-danger"
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
             },
             buttonsStyling: false
           })
