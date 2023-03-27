@@ -186,8 +186,8 @@ $(document).ready(function () {
         var usuario = $.trim($('#newUser').val())
         var pass = $.trim($('#pwd').val())
         $.ajax({
-            type: "POST",
-            url: "php/Prod.php",
+            type: 'POST',
+            url: 'php/Prod.php',
             data: {
                 nombre:nombre,
                 apellidos:apellidos,
@@ -196,7 +196,7 @@ $(document).ready(function () {
                 pass:pass,
                 opcion:opcion
             },
-            dataType: "json",
+            dataType: 'json',
             success: function (data) {
                 if (data !== '') {
                     const Toast = Swal.mixin({
@@ -264,10 +264,10 @@ $(document).ready(function () {
         resp = confirm(`¿Estás seguro de eliminar el registro ${id}?`)
         if (resp) {
             $.ajax({
-                type: "POST",
-                url: "php/Prod.php",
+                type: 'POST',
+                url: 'php/Prod.php',
                 data: {id:id,opcion:opcion},
-                dataType: "json",
+                dataType: 'json',
                 success: function () {
                     tablaUsers.row(fila.parents('tr')).remove().draw();
                 }

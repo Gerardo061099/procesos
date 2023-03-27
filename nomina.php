@@ -25,7 +25,7 @@ if (isset($_SESSION['id_user'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Nominas</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
@@ -83,12 +83,12 @@ if (isset($_SESSION['id_user'])) {
                     <div class="collapse show sub-menu" id="sub-menu">
                         <ul class="menu-lista">
                             <li class="options"><a href="produccion.php" class="links"><i class="fa-solid fa-industry"></i> Producción</a></li>
-                            <li class="options option-active-sub-me"><a href="#" class="links"><i class="fa-solid fa-cash-register"></i> Consumos</a></li>
+                            <li class="options"><a href="consumos.php" class="links"><i class="fa-solid fa-cash-register"></i> Consumos</a></li>
                             <li class="options"><a href="#" class="links"><i class="fa-regular fa-money-bill-1"></i> Costos de producción</a></li>
                         </ul>
                     </div>
                     <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i> Resultados de producción</a></li>
-                    <li class="options"><a href="nomina.php" class="links"><i class="fa-solid fa-file-invoice-dollar"></i> Nominas</a></li>
+                    <li class="options option-active"><a href="#" class="links"><i class="fa-solid fa-file-invoice-dollar"></i> Nominas</a></li>
                     <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu2" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle2');"><i class="fa-solid fa-people-group"></i> Empleados <i class="fa-solid fa-angle-down" id="icon-angle2"></i></a></li>
                     <div class="collapse sub-menu" id="sub-menu2">
                         <ul class="menu-lista">
@@ -105,24 +105,37 @@ if (isset($_SESSION['id_user'])) {
             </footer>
         </div>
         <div class="bread-crum">
-            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Gestion de producción</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Consumos</li>
+                    <li class="breadcrumb-item active" aria-current="page">Nomina</li>
                 </ol>
             </nav>
         </div>
     </div>
     <div class="container-costos card">
         <div class="card-header">
-            <h5 class="titulo-collaps">Consumos de Fundicion 1</h5>
+            <h5 class="titulo-collaps">Sueldos y Salarios</h5>
             <div class="button-remanente-retorno">
-                <button type="button" class="btn btn-primary btn-sm" id="newConsumo">
-                    <i class="fa-solid fa-square-plus"></i>
-                </button>
-                <button type="button" class="btn btn-light btn-sm" onclick="changeicon('pluss');" type="button" data-bs-toggle="collapse" data-bs-target="#consumos" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fa-solid fa-minus" id="pluss"></i>
-                </button>
+                <div class="row g-3 align-items-center contenedor-funciones-nomina">
+                    <div class="col-auto">
+                        <input type="file" id="" class="form-control form-control-sm bg-dark text-white">
+                    </div>
+                    <div class="col-auto">
+                        <label for="cantidad" class="col-form-label">Periodo:</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="date" id="fecha1" class="form-control form-control-sm bg-dark text-white">
+                    </div>
+                    <div class="col-auto"><p> al </p></div>
+                    <div class="col-auto">
+                        <input type="date" id="fecha2" class="form-control form-control-sm bg-dark text-white">
+                    </div>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-light btn-sm" onclick="changeicon('pluss');" type="button" data-bs-toggle="collapse" data-bs-target="#consumos" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fa-solid fa-minus" id="pluss"></i>
+                    </button>
+                </div>
             </div>
         </div>
         <div class="collapse show" id="consumos">
@@ -132,10 +145,9 @@ if (isset($_SESSION['id_user'])) {
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Concepto</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Acciones</th>
+                                <th scope="col">Empleado</th>
+                                <th scope="col">Salario</th>
+                                <th scope="col">Periodo</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -164,7 +176,7 @@ if (isset($_SESSION['id_user'])) {
                             <label for="cantidad" class="col-form-label text-white">Cantidad:</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" id="cantidad" class="form-control form-control-sm bg-dark text-white">
+                            <input type="date" id="cantidad" class="form-control form-control-sm bg-dark text-white">
                         </div>
                     </div>
                     <div class="modal-footer">

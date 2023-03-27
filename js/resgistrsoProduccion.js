@@ -8,8 +8,8 @@ function registredProduct() {
     var pzasAcept = document.getElementById('aceptadas').value
     var pzasRech = document.getElementById('rechazadas').value
     $.ajax({
-        type: "POST",
-        url: "php/registredProduccion.php",
+        type: 'POST',
+        url: 'php/registredProduccion.php',
         data: {
             'idEmpleado': empleado,
             'clavePieza': clavePieza,

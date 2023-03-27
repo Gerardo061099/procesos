@@ -51,13 +51,13 @@ $(document).ready(function () {
         e.preventDefault()
         var id = $.trim($('#idmodal2').val())
         var role = $.trim($('#rolemodal2').val())
-        alert("Registrando informacion en la Base de Datos.")
+        alert('Registrando informacion en la Base de Datos.')
         alert('Datos enviados: ' + id + ' ' + role)
         $.ajax({
-            type: "POST",
-            url: "php/usersRole.php",
+            type: 'POST',
+            url: 'php/usersRole.php',
             data: {id: id,role: role,opcion:opcion},
-            dataType: "json",
+            dataType: 'json',
             success: function (data) {
                 if (data === '') {
                     const Toast = Swal.mixin({

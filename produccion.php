@@ -91,7 +91,7 @@ if (isset($_SESSION['id_user'])) {
                         </ul>
                     </div>
                     <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i> Resultados de producción</a></li>
-                    <li class="options"><a href="#" class="links"><i class="fa-solid fa-file-invoice-dollar"></i> Nominas</a></li>
+                    <li class="options"><a href="nomina.php" class="links"><i class="fa-solid fa-file-invoice-dollar"></i> Nominas</a></li>
                     <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu2" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle2');"><i class="fa-solid fa-people-group"></i> Empleados <i class="fa-solid fa-angle-down" id="icon-angle2"></i></a></li>
                     <div class="collapse sub-menu" id="sub-menu2">
                         <ul class="menu-lista">
@@ -148,7 +148,7 @@ if (isset($_SESSION['id_user'])) {
         </div>
     </div>
     <div class="container-init-tags">
-        <div class="text-white bg-danger container-tags">
+        <div class="text-white bg-danger container-tags" draggable="true">
             <div class="img-remanente">
                 <img src="img/plata-en-lingotes.png" alt="">
             </div>
@@ -158,7 +158,7 @@ if (isset($_SESSION['id_user'])) {
                 <label for="lingote">Lingote</label>
             </div>
         </div>
-        <div class="text-white bg-success container-tags">
+        <div class="text-white bg-success container-tags" draggable="true">
             <div class="img-remanente">
                 <img src="img/gotas.png" alt="">
             </div>
@@ -168,7 +168,7 @@ if (isset($_SESSION['id_user'])) {
                 <label for="goteo">Goteo</label>
             </div>
         </div>
-        <div class="text-white bg-primary container-tags">
+        <div class="text-white bg-primary container-tags" draggable="true">
             <div class="img-remanente">
                 <img src="img/maceta.png" alt="">
             </div>
@@ -179,7 +179,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </div>
     </div>
-    <div class="container-prod">
+    <div class="container-prod" draggable="true">
         <div class="card container-prod-f1 bg-dark text-white">
             <div class="card-header">
                 <h5 class="titulo-collaps">Producción de Fundición 1</h5>

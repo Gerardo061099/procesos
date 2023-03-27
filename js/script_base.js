@@ -4,7 +4,7 @@
  *  Obtenemos la fecha del día
  */
 $(document).ready(function () {
-    var tooltipTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipTriggerList = Array.prototype.slice.call(document.querySelectorAll("[data-bs-toggle='tooltip']"))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
     })
@@ -49,10 +49,10 @@ function showInfoMoldeador() {
         'numerOperador': numerOperador
     }
     $.ajax({
-        type: "POST",
-        url: "php/infomoldeador.php",
+        type: 'POST',
+        url: 'php/infomoldeador.php',
         data: datos,
-        dataType: "json",
+        dataType: 'json',
         success: function (data) {
             if (data.status === 'ok') {
                 $('#apellidosMoldeador').val(data.result.apellidos)
@@ -60,7 +60,7 @@ function showInfoMoldeador() {
                 $('#areaMoldeador').val(data.result.area)
             } else {
                 // mostramos un alert mediante una funcion previamente creada con dos parametros (mensaje,tipo = danger, success etc)
-                alertMessage('No existe ningun usuario con el número de control ingresado','danger')
+                alertMessage('No existe ningun usuario con el número de control ingresado o este corresponda a otra area','danger')
                 // esta funcion fue creada en el script script_user
             }
         }

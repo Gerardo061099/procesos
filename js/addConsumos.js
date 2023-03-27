@@ -29,8 +29,8 @@ $(document).ready(function () {
         var cantidad = $.trim($('#cantidad').val()) 
         //alert(`El Consumo es: ${concepto} con un stock de: ${cantidad}`)
         $.ajax({
-            type: "POST",
-            url: "php/Prod.php",
+            type: 'POST',
+            url: 'php/Prod.php',
             data: {
                 id:id,
                 concepto:concepto,
@@ -74,10 +74,10 @@ $(document).ready(function () {
         resp = confirm(`¿Estás seguro de eliminar el registro ${id} ?`)
         if (resp) {
             $.ajax({
-                type: "POST",
-                url: "php/Prod.php",
+                type: 'POST',
+                url: 'php/Prod.php',
                 data: {id:id,opcion:opcion},
-                dataType: "json",
+                dataType: 'json',
                 success: function () {
                     tablaConsumos.row(fila.parents('tr')).remove().draw();
                 }

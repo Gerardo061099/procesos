@@ -310,10 +310,14 @@
     float: left;
 }
 
+
 .button-remanente-retorno {
     float: right;
+    display: flex;
 }
-
+.contenedor-funciones-nomina{
+    padding: 0 5px;
+}
 .container-prod {
     width: 100%;
     padding: 10px 15px;

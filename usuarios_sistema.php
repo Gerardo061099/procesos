@@ -85,7 +85,7 @@ if (isset($_SESSION['id_user'])) {
                         </ul>
                     </div>
                     <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i> Resultados de producción</a></li>
-                    <li class="options"><a href="#" class="links"><i class="fa-solid fa-file-invoice-dollar"></i> Nominas</a></li>
+                    <li class="options"><a href="nomina.php" class="links"><i class="fa-solid fa-file-invoice-dollar"></i> Nominas</a></li>
                     <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu2" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle2');"><i class="fa-solid fa-people-group"></i> Empleados <i class="fa-solid fa-angle-down" id="icon-angle2"></i></a></li>
                     <div class="collapse sub-menu" id="sub-menu2">
                         <ul class="menu-lista">
