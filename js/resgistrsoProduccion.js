@@ -10,11 +10,7 @@ function registredProduct() {
     $.ajax({
         type: 'POST',
         url: 'php/registredProduccion.php',
-        data: {
-            'idEmpleado': empleado,
-            'clavePieza': clavePieza,
-            'pzasAcept': pzasAcept,
-            'pzasRech': pzasRech
+        data: {'idEmpleado': empleado,'clavePieza': clavePieza,'pzasAcept': pzasAcept,'pzasRech': pzasRech
         },
         dataType: false,
         success: function (resp) {

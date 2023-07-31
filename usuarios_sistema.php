@@ -25,8 +25,10 @@ if (isset($_SESSION['id_user'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
+    <link rel="shortcut icon" href="img/data-analytics.png">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles2.css">
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.13.2/css/dataTables.bootstrap5.min.css">
 </head>
@@ -68,7 +70,10 @@ if (isset($_SESSION['id_user'])) {
         </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V</h5>
+                <div class="container-perfil">
+                    <img src="img/man.png" alt="" class="img-perfil">
+                    <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
+                </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="divicion"></div>
@@ -81,7 +86,7 @@ if (isset($_SESSION['id_user'])) {
                         <ul class="menu-lista">
                             <li class="options"><a href="produccion.php" class="links"><i class="fa-solid fa-industry"></i> Producción</a></li>
                             <li class="options"><a href="consumos.php" class="links"><i class="fa-solid fa-cash-register"></i> Consumos</a></li>
-                            <li class="options"><a href="#" class="links"><i class="fa-regular fa-money-bill-1"></i> Costos de producción</a></li>
+                            <li class="options"><a href="#" class="links"><i class="fa-solid fa-dollar-sign"></i> Costos de producción</a></li>
                         </ul>
                     </div>
                     <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i> Resultados de producción</a></li>
@@ -96,8 +101,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
             <footer class="footer">
                 <div class="container-perfil">
-                    <img src="img/man.png" alt="" class="img-perfil">
-                    <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V &reg;</h5>
                 </div>
             </footer>
         </div>
@@ -118,7 +122,7 @@ if (isset($_SESSION['id_user'])) {
         <div class="modal fade" id="add_user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
                 <div class="modal-content">
-                    <div class="modal-header" id="header-modal-add-user">
+                    <div class="modal-header bg-dark" id="header-modal-add-user">
                         <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-user-plus"></i> Nuevo usuario</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -149,16 +153,16 @@ if (isset($_SESSION['id_user'])) {
                                 <input type="password" class="form-control" id="pwd" placeholder="********">
                             </div>
                             <div class="form-check" id="show-pass" hidden>
-                                <label for="Checkpass" class="form-label text-black">Show password</label>
-                                <input class="form-check-input" type="checkbox" value="" id="Checkpass" onchange="showorhidepass('pwd');">
+                                <label for="Checkpass2" class="form-label text-black">Show password</label>
+                                <input class="form-check-input" type="checkbox" value="" id="Checkpass2" onchange="showorhidepass('pwd','Checkpass2');">
                             </div>
                             <div id="alerta">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="cerrar();">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="confirm" onclick="record_user();">Confirmar</button>
-                            <button type="submit" class="btn btn-success " id="show-item3" hidden>Registrar</button>
+                            <button type="button" class="btn btn-primary" id="confirm" onclick="record_user();">Continuar</button>
+                            <button type="submit" class="btn btn-success " id="show-item3" hidden disabled>Registrar</button>
                         </div>
                     </form>
                 </div>
@@ -186,7 +190,7 @@ if (isset($_SESSION['id_user'])) {
     <div class="modal fade" id="editUsers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header header-modal-edit">
+                <div class="modal-header bg-dark">
                     <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -226,7 +230,7 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                         <div class="form-check">
                             <label for="Checkpass" class="form-label text-black">Show password</label>
-                            <input class="form-check-input" type="checkbox" value="" id="Checkpass" onchange="showorhidepass('passmodal');">
+                            <input class="form-check-input" type="checkbox" value="" id="Checkpass" onchange="showorhidepass('passmodal','Checkpass');">
                         </div>
                     </div>
                     <div class="modal-footer d-grid gap-2 d-md-flex justify-content-md-end">
@@ -278,7 +282,7 @@ if (isset($_SESSION['id_user'])) {
     <div class="modal fade" id="addRole" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header header-modal-add">
+                <div class="modal-header bg-dark">
                     <h5 class="modal-title" id="exampleModalLabel">Asignar Role</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

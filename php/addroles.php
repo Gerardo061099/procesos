@@ -1,8 +1,14 @@
 <?php
+/**
+ * 
+ */
+include( 'conexion.php' );
+/**
+ * Codigo by: Gerardo Jimenez Castillo
+ */
 $role = $_POST[ 'role' ];
 $id_user = $_POST[ 'id_user' ];
 $operacion = $_POST[ 'operacion' ];
-include( 'conexion.php' );
 $query1 = mysqli_query( $conexion, "SELECT nombre FROM $tb_roles WHERE nombre = '$role'" );
 $result = mysqli_fetch_array( $query1 );
 $nombre = $result[ 'nombre' ];

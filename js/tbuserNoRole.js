@@ -51,8 +51,6 @@ $(document).ready(function () {
         e.preventDefault()
         var id = $.trim($('#idmodal2').val())
         var role = $.trim($('#rolemodal2').val())
-        alert('Registrando informacion en la Base de Datos.')
-        alert('Datos enviados: ' + id + ' ' + role)
         $.ajax({
             type: 'POST',
             url: 'php/usersRole.php',
@@ -112,6 +110,7 @@ $(document).ready(function () {
         $('#nombremodal2').val(nombre)
         $('#apellidosmodal2').val(apellidos)
         $('#num_empleadomodal2').val(numControl)
+        $('#rolemodal2').trigger('reset')
         $('#addRole').modal('show')
     })
 })

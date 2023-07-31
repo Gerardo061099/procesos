@@ -26,8 +26,10 @@ if (isset($_SESSION['id_user'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <link rel="shortcut icon" href="img/data-analytics.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles2.css">
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.13.2/css/dataTables.bootstrap5.min.css">
 </head>
@@ -69,7 +71,10 @@ if (isset($_SESSION['id_user'])) {
         </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V &reg;</h5>
+                <div class="container-perfil">
+                    <img src="img/man.png" alt="" class="img-perfil">
+                    <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
+                </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="divicion"></div>
@@ -82,7 +87,7 @@ if (isset($_SESSION['id_user'])) {
                         <ul class="menu-lista">
                             <li class="options"><a href="produccion.php" class="links"><i class="fa-solid fa-industry"></i> Producción</a></li>
                             <li class="options"><a href="consumos.php" class="links"><i class="fa-solid fa-cash-register"></i> Consumos</a></li>
-                            <li class="options"><a href="#" class="links"><i class="fa-regular fa-money-bill-1"></i> Costos de producción</a></li>
+                            <li class="options"><a href="#" class="links"><i class="fa-solid fa-dollar-sign"></i> Costos de producción</a></li>
                         </ul>
                     </div>
                     <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i> Resultados de producción</a></li>
@@ -97,8 +102,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
             <footer class="footer">
                 <div class="container-perfil">
-                    <img src="img/man.png" alt="" class="img-perfil">
-                    <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V &reg;</h5>
                 </div>
             </footer>
         </div>
@@ -106,37 +110,13 @@ if (isset($_SESSION['id_user'])) {
             <h4 id="text">Dashboard</h4>
         </div>
     </div>
-    <div class="container-p">
-        <ol class="list-group list-group-numbered">
-            <h4>Producción kg</h4>
-            <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-success">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Aceptadas:</div>
-                    Piezas aceptadas.
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-light">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Rechazadas:</div>
-                    Piezas Rechazadas.
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start list-group-item-success">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">Total piezas:</div>
-                    Total producidas.
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-        </ol>
-        <div class="container-p-b">
+    <main class="container-p">
+        <section class="container-p-b">
             <div class="card">
-                <div class="card-header bg-primary text-white header-container-p">
+                <div class="card-header bg-dark text-white header-container-p">
                     <h4 class="title-card">Producción Actual</h4>
                     <div class="plus btn-sm">
-                        <button class="btn btn-primary btn-sm" id="boton-c" onclick="changeicon('tbProd');" type="button" data-bs-toggle="collapse" data-bs-target="#tablaProduccion" aria-expanded="false" aria-controls="collapseExample">
+                        <button class="btn btn-dark btn-sm" id="boton-c" onclick="changeicon('tbProd');" type="button" data-bs-toggle="collapse" data-bs-target="#tablaProduccion" aria-expanded="false" aria-controls="collapseExample">
                             <i class="fa-solid fa-minus" id="tbProd"></i>
                         </button>
                     </div>
@@ -153,7 +133,6 @@ if (isset($_SESSION['id_user'])) {
                                         <th scope="col">Pieza</th>
                                         <th scope="col">Aceptadas</th>
                                         <th scope="col">Rechazadas</th>
-                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -165,7 +144,7 @@ if (isset($_SESSION['id_user'])) {
                 <div class="modal fade" id="editProd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-fullscreen-sm-down">
                         <div class="modal-content">
-                            <div class="modal-header" id="header-modal-add-user">
+                            <div class="modal-header bg-dark" id="header-modal-add-user">
                                 <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-pencil"></i> Editar registro</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -206,49 +185,92 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+        <aside class="container-rem">
+            <div class="container2">
+                <div class="card bg-dark">
+                    <div class="card-header cabecera text-white">
+                        <h5 class="title-card"><i class="fa-solid fa-chart-pie"></i> Remanente utilizado</h5>
+                        <div class="plus btn-sm">
+                            <button class="btn btn-dark btn-sm" id="boton-b" onclick="changeicon('icon1');" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fa-solid fa-minus" id="icon1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="collapse show" id="collapseExample">
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-p-a">
+                <div class="card bg-dark text-white">
+                    <div class="card-header header-container-p">
+                        <h5 class="title-card"><i class="fa-solid fa-list-ol"></i> Resumen</h5>
+                        <div class="plus btn-sm">
+                            <button class="btn btn-dark btn-sm" id="boton-c" onclick="changeicon('icon-resumen');" type="button" data-bs-toggle="collapse" data-bs-target="#resumen" aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fa-solid fa-minus" id="icon-resumen"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="collapse show" id="resumen">
+                        <div class="">
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item d-flex justify-content-between align-items-start bg-dark text-white">
+                                    <div class="ms-2 me-auto text-white">
+                                        <div class="fw-bold text-success">Aceptadas:</div>
+                                        Piezas aceptadas.
+                                    </div>
+                                    <span class="badge bg-success rounded-pill" id="stock-accep"></span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start bg-dark text-white">
+                                    <div class="ms-2 me-auto text-white">
+                                        <div class="fw-bold text-danger">Rechazadas:</div>
+                                        Piezas Rechazadas.
+                                    </div>
+                                    <span class="badge bg-danger rounded-pill" id="stock-deni"></span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-start bg-dark text-white">
+                                    <div class="ms-2 me-auto text-white">
+                                        <div class="fw-bold text-info">Total piezas:</div>
+                                        Total producidas.
+                                    </div>
+                                    <span class="badge bg-info rounded-pill" id="stock-total"></span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container2-consumos">
+                <div class="card bg-dark tag-graphis">
+                    <div class="card-header text-white">
+                        <h5 class="title-card"><i class="fa-solid fa-ranking-star"></i> Ranking de empleados</h5>
+                        <div class="plus btn-sm">
+                            <button class="btn btn-dark btn-sm" id="boton-c" onclick="changeicon('icon2');" type="button" data-bs-toggle="collapse" data-bs-target="#tarjeta2" aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fa-solid fa-minus" id="icon2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="collapse show" id="tarjeta2">
+                        <div class="card-body">
+                            <div class="">
+                                <canvas id="myChart2" class="text-white"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+
+    <footer></footer>
     <!-- Card dinamico -->
-    <div class="container-rem">
-        <div class="container2">
-            <div class="card bg-dark">
-                <div class="card-header cabecera text-white ">
-                    <h5 class="title-card"><i class="fa-solid fa-chart-pie"></i> Remanente utilizado</h5>
-                    <div class="plus btn-sm">
-                        <button class="btn btn-dark btn-sm" id="boton-b" onclick="changeicon('icon1');" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fa-solid fa-minus" id="icon1"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="collapse show" id="collapseExample">
-                    <div class="card-body">
-                        <div class="chart-container" style="display: flex; justify-content: center; width:386px; height:240px">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container2-consumos">
-            <div class="card bg-success">
-                <div class="card-header text-white ">
-                    <h5 class="title-card"><i class="fa-solid fa-ranking-star"></i> Ranking de empleados</h5>
-                    <div class="plus btn-sm">
-                        <button class="btn btn-success btn-sm" id="boton-c" onclick="changeicon('icon2');" type="button" data-bs-toggle="collapse" data-bs-target="#tarjeta2" aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fa-solid fa-minus" id="icon2"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="collapse show" id="tarjeta2">
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="myChart2" class="text-white"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <script src="https://kit.fontawesome.com/282ec8cabc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

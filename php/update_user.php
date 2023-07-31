@@ -1,5 +1,11 @@
 <?php
+/**
+ * 
+ */
 include( 'conexion.php' );
+/**
+ * Codigo by: Gerardo Jimenez Castillo
+ */
 $id = $_POST[ 'idmodal' ];
 $nombre = $_POST[ 'nombremodal' ];
 $apellidos = $_POST[ 'apellidosmodal' ];

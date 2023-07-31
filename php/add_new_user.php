@@ -1,5 +1,11 @@
 <?php
+/**
+ * 
+ */
 include( 'conexion.php' );
+/**
+ * Codigo by: Gerardo Jimenez Castillo
+ */
 $nombre = $_POST[ 'nombre' ];
 $apellidos = $_POST[ 'apellidos' ];
 $n_control = $_POST[ 'numero_control' ];

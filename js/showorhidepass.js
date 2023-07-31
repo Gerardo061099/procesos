@@ -2,9 +2,9 @@
  * Funcion para mostrar u ocultar
  * el password 
  */
-function showorhidepass(data){
+function showorhidepass(data,element){
     var password1 = document.getElementById(data)
-    var check = document.getElementById('Checkpass')
+    var check = document.getElementById(element)
     // Si el checkbox de mostrar contraseña está activada
     if(check.checked === true){
         password1.type = 'text'
