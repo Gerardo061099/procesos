@@ -13,7 +13,7 @@
     <div class="barra"></div>
     <div class="container-login">
         <div class="log-in">
-            <div class="login-head"><h1>Sign in to App</h1></div>
+            <div class="login-head"><h1>Sign in</h1></div>
             <div class="linea"></div>
             <div class="container-img"><img src="img/man.png" alt="" class="user-img"></div>
             <form action="verify_session.php" method="POST" id="frm-logIn">

@@ -1,9 +1,9 @@
 <?php
 
 $host = 'localhost'; //'192.168.68.120';
-$userdb = 'stacks';
+$userdb = 'root';
 $claveus = 'stacks147852369';
-$nombredb = 'produccion1';//'produccion_aluxsa';
+$nombredb = 'db_aluxsa';//'produccion_aluxsa';
 
 $tb_materiaPrima = 'materia_prima';
 $tb_materiPrima_produccion = 'materia_prima_produccion';

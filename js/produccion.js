@@ -54,8 +54,6 @@ $(document).ready(function () {
         ]
     })
 
-    
-
     $('#registro_p').submit(function(e){    
         e.preventDefault() //evita el comportambiento normal del submit, es decir, recarga total de la página
         var id = $.trim($('#idEmpleado').val())

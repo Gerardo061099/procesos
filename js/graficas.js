@@ -2,7 +2,7 @@
  *  Graficas con informacion del remanente y
  *  consumos utilizados en producción
  */
-Chart.defaults.borderColor = false;
+Chart.defaults.borderColor = '#424949'
 Chart.defaults.color = '#fff'
 const dona = document.getElementById('myChart')
 var pesoPlaca = '300 kg'

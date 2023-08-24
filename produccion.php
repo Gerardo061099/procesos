@@ -68,7 +68,7 @@ if (isset($_SESSION['id_user'])) {
                 <i class="fa-solid fa-bars fa-beat"></i>
             </a>
         </div>
-        <div class="bread-crum">
+        <div class="bread-crum ">
             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Gestion de producción</a></li>
@@ -114,14 +114,14 @@ if (isset($_SESSION['id_user'])) {
             </footer>
         </div>
     </div>
-    <div class="container-init-tags">
+    <div class="container-init-tags grid">
         <div class=" bg-dark text-white container-tags Lingote_Ret" draggable="true">
             <div class="img-remanente">
                 <img src="img/silver.png" alt="">
             </div>
             <div class="line-separator"></div>
             <div class="body-tags">
-                <h2 class="lingoteR"><strong ></strong></h2>
+                <h2 class="lingoteR"><strong></strong></h2>
                 <label for="lingote">Lingote Ret.</label>
             </div>
         </div>
@@ -158,13 +158,13 @@ if (isset($_SESSION['id_user'])) {
     </div>
     <main class="container-prod">
         <section class="container-table-registros-produccion">
-            <div class="card bg-dark text-white contenedor-tb-produccion">
+            <div class="card w-80 bg-dark text-white contenedor-tb-produccion">
                 <div class="card-header">
                     <h5 class="titulo-collaps">Producción de Fundición 1</h5>
                     <div class="plus btn-sm d-grid gap-2 d-md-flex justify-content-md-end">
                         <span data-bs-toggle="tooltip" data-bs-placement="top" title="Registro de piezas elaboradas">
-                            <button type="button" class="btn btn-secondary btn-sm text-white" id="nuevoRegistro">
-                                Registrar
+                            <button type="button" class="btn btn-success btn-sm text-white" id="nuevoRegistro">
+                                <img src="img/add-user.png" alt="">
                             </button>
                         </span>
                         <button class="btn btn-dark btn-sm" id="boton-b" onclick="changeicon('plus');" type="button" data-bs-toggle="collapse" data-bs-target="#productiones" aria-expanded="false" aria-controls="productiones">
@@ -196,15 +196,56 @@ if (isset($_SESSION['id_user'])) {
                     <div class="card-footer footer-modal-btn">
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#totales">Pesos totales</button>
                     </div>
+                    <div class="modal fade" id="totales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen-sm-down">
+                            <div class="modal-content ">
+                                <div class="modal-header header-modal-kg bg-dark text-white" id="header-modal-retorno">
+                                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-hands-holding-circle"></i> Produccion Total</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="row g-3" id="frm-add-users">
+                                        <div class="col-md-5">
+                                            <label for="mod-lingote-c">Pzas Aceptadas:</label>
+                                            <p>345 Piezas</p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label for="mod-rechazo-kg">Pzas Aceptadas (kg):</label>
+                                            <input type="number" class="form-control form-control-sm" id="mod-rechazo-kg" min="1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label for="mod-rechazo-c">Pza rechazada:</label>
+                                            <p>100 Piezas</p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label for="mod-rechazo-kg">Pza rechazada (kg):</label>
+                                            <input type="number" class="form-control form-control-sm" id="mod-rechazo-kg" min="1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label for="mod-total">Total:</label>
+                                            <p id="pzas_totales"></p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label for="mod-total-kg">Total (kg):</label>
+                                            <p id="kg_tot_prod"></p>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-success btn-sm">Registrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
         <div class="modal fade" id="modalResgistros" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-fullscreen-sm-down">
                 <div class="modal-content">
-                    <div class="modal-header bg-dark" id="header-modal-retorno">
+                    <div class="modal-header bg-dark text-center" id="header-modal-retorno">
                         <h5 class="modal-title" id="exampleModalLabel"> Produccion</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form id="registro_p">
                         <div class="modal-body row g-3">
@@ -250,7 +291,7 @@ if (isset($_SESSION['id_user'])) {
         </div>
         <div class="container-form registros-rem">
             <div class="container-rem-prod">
-                <div class="card text-white bg-dark">
+                <div class="card w-20 text-white bg-dark">
                     <div class="card-header">
                         <h5 class="titulo-collaps">Remanente/Materia prima producción</h5>
                         <div class="button-remanente-retorno d-grid gap-2 d-md-flex justify-content-md-end">
@@ -267,8 +308,8 @@ if (isset($_SESSION['id_user'])) {
                     <div class="collapse show" id="rem-produccion">
                         <form id="form-mat-prima">
                             <div class="card-body">
-                                <section class="frm-mp">
-                                    <div class="mb-2 row">
+                                <section class="frm-mp container">
+                                    <div class="sm-2 row">
                                         <div class="form-check col-auto">
                                             <input class="form-check-input btnradio" type="radio" name="btnradio" id="radio1" value="Remanente">
                                             <label class="form-check-label" for="radio1">Remanente</label>
@@ -279,17 +320,20 @@ if (isset($_SESSION['id_user'])) {
                                         </div>
                                     </div>
                                     <div class="mb-2 row">
-                                        <label for="nombreMP" class="col-sm-2 col-form-label form-control-sm">Nombre:</label>
-                                        <div class="col-sm-5">
+                                        <label for="selectRem" class="col-sm-4 col-form-label form-control-sm">Nombre:</label>
+                                        <div class="col-sm-7">
                                             <select class="form-select" id="selectRem" aria-label="Default select example">
                                                 <option selected>Choose..</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mb-2 row">
-                                        <label for="nombreMP" class="col-sm-2 col-form-label form-control-sm">Cantidad:</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" class="form-control form-control-sm" id="cantidadMP" min="0">
+                                        <label for="cantidadMP" class="col-sm-4 col-form-label form-control-sm">Cantidad:</label>
+                                        <div class="col-sm-7">
+                                            <div class="input-group sm-3">
+                                                <input id="cantidadMP" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
+                                                <span class="input-group-text bg-dark text-white" id="basic-addon2">kg</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </section>
@@ -301,95 +345,76 @@ if (isset($_SESSION['id_user'])) {
                             </div>
                         </form>
                     </div>
+                    <div class="modal fade" id="retorno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-fullscreen-sm-down">
+                            <div class="modal-content">
+                                <div class="modal-header bg-dark text-white" id="header-modal-retorno">
+                                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-arrows-rotate"></i> Remanente sobrante del día</h5>
+                                    <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form class="row g-3" id="frm-rem-sobrante">
+                                    <div class="modal-body text-black">
+                                        <p><strong>Instrucciones:</strong> Registra el aluminio sobrante de la producción de hoy</p>
+                                        <div class="mb-2 row">
+                                            <label for="remRetorno" class="col-sm-2 col-form-label form-control-sm">Nombre:</label>
+                                            <div class="col-sm-5">
+                                                <select class="form-select" id="remRetorno" aria-label="Default select example">
+                                                    <option selected>Choose..</option>
+                                                    <option value="Lingote Retorno">Lingote Retorno</option>
+                                                    <option value="Pza Rechazada">Pza Rechazada</option>
+                                                    <option value="Gota">Gota</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="mb-2 row">
+                                            <label for="peso" class="col-sm-2 col-form-label form-control-sm">Cantidad:</label>
+                                            <div class="col-sm-5">
+                                                <div class="input-group sm-3">
+                                                    <input type="text" class="form-control" placeholder="200, 150, 300..." aria-label="Nombre de usuario del destinatario" aria-describedby="basic-addon2" id="peso">
+                                                    <span class="input-group-text bg-dark text-white" id="basic-addon2">kg</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p><strong>Nota:</strong> La cantidad registrada se considerará como peso en kg.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-dark btn-sm">Registrar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
-    <div class="modal fade" id="totales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen-sm-down">
-            <div class="modal-content ">
-                <div class="modal-header header-modal-kg bg-dark text-white" id="header-modal-retorno">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-hands-holding-circle"></i> Produccion Total</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form class="row g-3" id="frm-add-users">
-                        <div class="col-md-5">
-                            <label for="mod-lingote-c">Pzas Aceptadas:</label>
-                            <p>345 Piezas</p>
-                        </div>
-                        <div class="col-md-5">
-                            <label for="mod-rechazo-kg">Pzas Aceptadas (kg):</label>
-                            <input type="number" class="form-control form-control-sm" id="mod-rechazo-kg" min="1">
-                        </div>
-                        <div class="col-md-5">
-                            <label for="mod-rechazo-c">Pza rechazada:</label>
-                            <p>100 Piezas</p>
-                        </div>
-                        <div class="col-md-5">
-                            <label for="mod-rechazo-kg">Pza rechazada (kg):</label>
-                            <input type="number" class="form-control form-control-sm" id="mod-rechazo-kg" min="1">
-                        </div>
-                        <div class="col-md-5">
-                            <label for="mod-total">Total:</label>
-                            <p id="pzas_totales"></p>
-                        </div>
-                        <div class="col-md-5">
-                            <label for="mod-total-kg">Total (kg):</label>
-                            <p id="kg_tot_prod"></p>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success btn-sm">Registrar</button>
+    <section class="container-prod">
+        <div class="card w-100 text-center bg-dark text-white ">
+            <div class="card-header">
+                Total de piezas elaboradas por Mes
+            </div>
+            <div class="card-body">
+                <div>
+                    <canvas id="chartProduccion"></canvas>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="modal fade" id="retorno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen-sm-down">
-            <div class="modal-content">
-                <div class="modal-header bg-dark text-white" id="header-modal-retorno">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-arrows-rotate"></i> Remanente sobrante del día</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form class="row g-3" id="frm-rem-sobrante">
-                    <div class="modal-body">
-                        <p><strong>Instrucciones:</strong> Registra el aluminio sobrante de la producción de hoy</p>
-                        <div class="mb-2 row">
-                            <label for="nombreMP" class="col-sm-2 col-form-label form-control-sm">Nombre:</label>
-                            <div class="col-sm-5">
-                                <select class="form-select" id="remRetorno" aria-label="Default select example">
-                                    <option selected>Choose..</option>
-                                    <option value="Lingote Retorno">Lingote Retorno</option>
-                                    <option value="Pza Rechazada">Pza Rechazada</option>
-                                    <option value="Gota">Gota</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mb-2 row">
-                            <label for="nombreMP" class="col-sm-2 col-form-label form-control-sm">Cantidad:</label>
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control form-control-sm" id="peso" min="0">
-                            </div>
-                        </div>
-                        <p><strong>Nota:</strong> La cantidad registrada se considerará como peso en kg.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-dark btn-sm">Registrar</button>
-                    </div>
-                </form>
+            <div class="card-footer text-muted">
+                Hace 2 días
             </div>
         </div>
-    </div>
+    </section>
+    
+    
 
     <script src="https://kit.fontawesome.com/282ec8cabc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/produccion.js" type="module"></script>
     <script src="js/script_user.js"></script>
+    <script src="js/graphicProduccion.js"></script>
     <script src="js/script_base.js"></script>
     <script src="js/resgistrsoProduccion.js"></script>
     <script src="js/functionradio.js" type="module"></script>

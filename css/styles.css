@@ -272,7 +272,6 @@
 }
 
 .container-rem-prod {
-    width: 550px;
 }
 
 .container-list-rem {
@@ -314,7 +313,6 @@
 .container-table-registros-produccion {
     padding-top: 10px ;
     padding-bottom: 10px;
-    width: 70%;
 }
 
 .group-options {
@@ -351,9 +349,9 @@
 
 .container-init-tags {
     width: 100%;
-    padding: 10px 5px;
+    padding: 10px 15px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .line-separator {
@@ -367,7 +365,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 15%;
+    width: 22%;
     padding: 10px 10px;
     border-radius: 5px;
 }
