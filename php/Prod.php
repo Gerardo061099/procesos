@@ -77,7 +77,7 @@ switch ($opcion) {
         break;
 
     case 8:
-        // todo: edit user without password
+        //todo: edit user without password
         $consulta = mysqli_query($conexion, "SELECT id_role FROM $tb_users WHERE id = $id");
         $res = mysqli_fetch_array($consulta);
         $id_role = $res['id_role'];

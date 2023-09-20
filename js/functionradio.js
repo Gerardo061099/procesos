@@ -22,7 +22,7 @@ $(document).ready(function () {
         var ultimaProd = ultimaProduccion()
         var op
         var data
-        if (nombre === 'Choose..' || peso === '') {alert('Algunos datos estan vacio')}
+        if (nombre === 'Choose..' || peso === '') alert('Algunos datos estan vacio')
         if (nombre !== 'Choose..' && peso !== '') {
             opcion = 1
             console.log(fecha)
@@ -59,6 +59,10 @@ $(document).ready(function () {
                         consultaRemanente(data)
                         $('#form-mat-prima').trigger('reset')
                         $('#selectRem').empty()
+                        $('#selectRem').append($('<option />', {
+                            text: 'Choose..',
+                            selected: true
+                        }))
                     }
                     if (response === 'Error') setMessageAlert('Error al insertar los datos','danger')
                 }

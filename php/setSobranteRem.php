@@ -47,7 +47,7 @@ function addRemanente($nombre,$peso_kg,$descripcion,$fechaprod) {
 if (isset($fecha)) {
     $resultado = addRemanente($nombre,$peso,$desc,$fecha);
     echo $resultado;
-}else{
+} else{
     echo '0';
 }
 

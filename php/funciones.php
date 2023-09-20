@@ -96,5 +96,4 @@ function remanenteUtil($fecha_hoy,$reman_array,$last_prod) {
     }
     return $cantidad_rem;
 }
-//remanenteUtil('2023-07-27',['Lingote Retorno','Pza Rechazada','Gota','Coladas'],'2023-07-26');
 ?>

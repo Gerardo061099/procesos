@@ -13,13 +13,13 @@ export function startProduccion(fecha){
     })
     $.post('php/tags.php', datosenv,(data, statuss) => {
             if (data.result === '1') {
-                alert("Se inicio la produccion")
+                console.log("Ya se a iniciado la produccion previamente")
             }
             if (data.result === '2') {
-                alert("Se inicio la produccion")
+                console.log("Se inicio la produccion")
             }
             if (data.result === '0') {
-                alert('Error')
+                console.log('Error')
             }
         },'json'//definimos el formato de datos recibido
     )

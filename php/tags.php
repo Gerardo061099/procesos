@@ -37,7 +37,7 @@ switch ($tags) {
             if (mysqli_num_rows($query) > 0) {
                 $data['status'] = 'ok';
                 $data['result'] = '2';
-            }else { 
+            } else { 
                 $data['status'] = 'error';
                 $data['result'] = '0';
             }

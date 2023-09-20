@@ -9,7 +9,7 @@
             "type": "php",
             "request": "launch",
             "port": 9003,
-            "program": "C:\\MAMP\\htdocs\\procesos_fundicion\\php\\funciones.php"
+            "program": "/var/www/html/procesos/php/totalProduction.php"
         },
         {
             "name": "Launch currently open script",

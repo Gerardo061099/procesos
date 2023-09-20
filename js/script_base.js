@@ -63,9 +63,7 @@ function changeicon(a) {
 
 function showInfoMoldeador() {
     var numerOperador = document.getElementById('controlNumber').value
-    var data = JSON.stringify({
-        numerOperador: numerOperador
-    })
+    var data = JSON.stringify({'numerOperador': numerOperador})
     $.ajax({
         type: 'POST',
         url: 'php/infomoldeador.php',

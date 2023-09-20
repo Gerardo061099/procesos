@@ -158,13 +158,13 @@ if (isset($_SESSION['id_user'])) {
     </div>
     <main class="container-prod">
         <section class="container-table-registros-produccion">
-            <div class="card w-80 bg-dark text-white contenedor-tb-produccion">
+            <div class="card w-40 bg-dark text-white contenedor-tb-produccion">
                 <div class="card-header">
                     <h5 class="titulo-collaps">Producción de Fundición 1</h5>
-                    <div class="plus btn-sm d-grid gap-2 d-md-flex justify-content-md-end">
+                    <div class="plus d-grid gap-2 d-md-flex justify-content-md-end">
                         <span data-bs-toggle="tooltip" data-bs-placement="top" title="Registro de piezas elaboradas">
                             <button type="button" class="btn btn-success btn-sm text-white" id="nuevoRegistro">
-                                <img src="img/add-user.png" alt="">
+                                <i class="fa-solid fa-pen-to-square"></i>
                             </button>
                         </span>
                         <button class="btn btn-dark btn-sm" id="boton-b" onclick="changeicon('plus');" type="button" data-bs-toggle="collapse" data-bs-target="#productiones" aria-expanded="false" aria-controls="productiones">
@@ -194,32 +194,32 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                     </div>
                     <div class="card-footer footer-modal-btn">
-                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#totales">Pesos totales</button>
+                        <button type="button" class="btn btn-warning btn-sm btn-total-producido" data-bs-toggle="modal" data-bs-target="#totales">Pesos totales</button>
                     </div>
                     <div class="modal fade" id="totales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-fullscreen-sm-down">
-                            <div class="modal-content ">
+                            <div class="modal-content">
                                 <div class="modal-header header-modal-kg bg-dark text-white" id="header-modal-retorno">
-                                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-hands-holding-circle"></i> Produccion Total</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-hands-holding-circle"></i> Piezas Producidas</h5>
+                                    <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body text-black">
                                     <form class="row g-3" id="frm-add-users">
                                         <div class="col-md-5">
-                                            <label for="mod-lingote-c">Pzas Aceptadas:</label>
-                                            <p>345 Piezas</p>
+                                            <label for="pza_aceptada">Pzas Aceptadas:</label>
+                                            <p id="pza_aceptada"></p>
                                         </div>
                                         <div class="col-md-5">
-                                            <label for="mod-rechazo-kg">Pzas Aceptadas (kg):</label>
-                                            <input type="number" class="form-control form-control-sm" id="mod-rechazo-kg" min="1">
+                                            <label for="mod-aceptadas-kg">Pzas Aceptadas (kg):</label>
+                                            <input type="text" class="form-control form-control-sm" id="mod-aceptadas-kg">
                                         </div>
                                         <div class="col-md-5">
-                                            <label for="mod-rechazo-c">Pza rechazada:</label>
-                                            <p>100 Piezas</p>
+                                            <label for="pza_rechazada">Pza rechazada:</label>
+                                            <p id="pza_rechazada"></p>
                                         </div>
                                         <div class="col-md-5">
                                             <label for="mod-rechazo-kg">Pza rechazada (kg):</label>
-                                            <input type="number" class="form-control form-control-sm" id="mod-rechazo-kg" min="1">
+                                            <input type="text" class="form-control form-control-sm" id="mod-rechazo-kg">
                                         </div>
                                         <div class="col-md-5">
                                             <label for="mod-total">Total:</label>
@@ -281,7 +281,7 @@ if (isset($_SESSION['id_user'])) {
                                 <input type="number" class="form-control form-control-sm" id="idEmpleado" min="0" hidden>
                             </div>
                             <div><span id="alerta"></span></div>
-                            </div>
+                        </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-outline-success btn-sm">Registrar</button>
                         </div>
@@ -291,16 +291,16 @@ if (isset($_SESSION['id_user'])) {
         </div>
         <div class="container-form registros-rem">
             <div class="container-rem-prod">
-                <div class="card w-20 text-white bg-dark">
+                <div class="card w-40 text-white bg-dark">
                     <div class="card-header">
-                        <h5 class="titulo-collaps">Remanente/Materia prima producción</h5>
+                        <h5 class="titulo-collaps">Remanente</h5>
                         <div class="button-remanente-retorno d-grid gap-2 d-md-flex justify-content-md-end">
                             <span data-bs-toggle="tooltip" data-bs-placement="top" title="Registra el remanente">
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#retorno">
                                     <i class="fa-solid fa-arrows-rotate"></i> Retorno
                                 </button>
                             </span>
-                            <button type="button" class="btn btn-dark btn-sm" onclick="changeicon('pluss');" type="button" data-bs-toggle="collapse" data-bs-target="#rem-produccion" aria-expanded="false" aria-controls="collapseExample">
+                            <button type="button" class="btn btn-dark btn-sm" onclick="changeicon('pluss');" data-bs-toggle="collapse" data-bs-target="#rem-produccion" aria-expanded="false" aria-controls="collapseExample">
                                 <i class="fa-solid fa-minus" id="pluss"></i>
                             </button>
                         </div>
@@ -391,6 +391,7 @@ if (isset($_SESSION['id_user'])) {
     <section class="container-prod">
         <div class="card w-100 text-center bg-dark text-white ">
             <div class="card-header">
+                <i class="fa-solid fa-chart-column"></i>
                 Total de piezas elaboradas por Mes
             </div>
             <div class="card-body">
@@ -403,8 +404,6 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </div>
     </section>
-    
-    
 
     <script src="https://kit.fontawesome.com/282ec8cabc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -414,7 +413,7 @@ if (isset($_SESSION['id_user'])) {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/produccion.js" type="module"></script>
     <script src="js/script_user.js"></script>
-    <script src="js/graphicProduccion.js"></script>
+    <script src="js/graphicProduccion.js" type="module"></script>
     <script src="js/script_base.js"></script>
     <script src="js/resgistrsoProduccion.js"></script>
     <script src="js/functionradio.js" type="module"></script>

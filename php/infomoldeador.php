@@ -10,7 +10,7 @@ $datas = file_get_contents('php://input');
 $result = json_decode($datas);
 $matricula = $result -> numerOperador;
 $data = array();
-$query = mysqli_query($conexion, "SELECT id,nombre,apellidos,area FROM $tb_empleados WHERE num_empleado = $matricula AND area = 'Fundicion 1'");
+$query = mysqli_query($conexion, "SELECT e.id AS id,e.nombre AS nombre,e.apellidos AS apellidos,a.nombre AS area FROM $tb_empleados e INNER JOIN $tb_area a ON e.area_id = a.id WHERE e.num_empleado = $matricula AND a.nombre = 'Fundicion 1'");
 if (mysqli_num_rows($query) > 0) {
     $userData = mysqli_fetch_assoc($query);
     $data['status'] = 'ok';
