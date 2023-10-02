@@ -21,7 +21,6 @@ export function consultaRemanente(data) {
                 $('.ColadaC').text(`${remanentes[3]} kg`)
                 if (remanentes[0] > "0" && remanentes[1] > "0" && remanentes[2] > "0" && remanentes[3] > "0" ) {
                     $('#radio1').attr('disabled', true)
-                    $('#btnReg').attr('disabled', true)
                 }
         }
     })

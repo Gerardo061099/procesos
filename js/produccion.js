@@ -24,9 +24,10 @@ $(document).ready(function () {
         var inicioProduc = startProduccion(fechahoy)
         if (inicioProduc !== 'Error') {
             var remanentes = ['Lingote Retorno','Pza Rechazada','Gota','Coladas']
+            let area = 'Fundicion 1';
             let datos =  remanentes.map(rem => rem)
             console.log(`Arreglo datos: ${datos}`)
-                let data = JSON.stringify({'opcion': opcion,'ultimaprod': ultimaProd,'fechahoy': fechahoy,'remanente': datos})
+                let data = JSON.stringify({'opcion': opcion,'ultimaprod': ultimaProd,'fechahoy': fechahoy,'remanente': datos, 'area':area})
                 var queryRemanente = consultaRemanente(data)
         }
     }
@@ -133,8 +134,9 @@ $(document).ready(function () {
         var nombre = document.getElementById('remRetorno').value
         var peso = document.getElementById('peso').value
         var desc = "sobrante"
+        var area = "Fundicion 1"
         var peso_kg = parseFloat(peso)
-        var dataPetition = JSON.stringify({"nombre": nombre,"peso": peso_kg,"descripcion": desc,"fechahoy": fechahoy})
+        var dataPetition = JSON.stringify({"nombre": nombre,"peso": peso_kg,"descripcion": desc,"fechahoy": fechahoy,"area":area})
         if(nombre != 'Choose..' && peso_kg != '' ) {
             $.post('php/setSobranteRem.php', dataPetition,(dataresult, textStatus) => {
                 if (dataresult === '1') {
@@ -143,7 +145,7 @@ $(document).ready(function () {
                 }
                 if (dataresult === '0') setMessageAlert('Error en la insercion!!','error')
             }) 
-        } else{
+        } else {
             setMessageAlert('No se pudo completar el registro :(','error')
         }
     })
@@ -165,6 +167,20 @@ $(document).ready(function () {
                 let suma_total = parsetoInt(data[0].Total_A,data[0].Total_R)
                 $('#pzas_totales').text(suma_total + ' Piezas') 
             },'json')
+    })
+    $('#frm-production-t').submit(function (e) { 
+        e.preventDefault()
+        var kg_aceptados = document.getElementById('mod-aceptadas-kg').value
+        var kg_rechazados = document.getElementById('mod-rechazo-kg').value
+        if (kg_aceptados && kg_rechazados) {
+            let kg_acept = parseFloat(kg_aceptados)
+            let kg_rech = parseFloat(kg_rechazados) 
+            alert(`La produccion elaborada es de: ${kg_acept} y un rechazo de: ${kg_rech}`)
+        }
+        else{
+            alert('Datos vacios')
+        }
+        
     })
 
 })

@@ -162,7 +162,7 @@ if (isset($_SESSION['id_user'])) {
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="cerrar();">Cerrar</button>
                             <button type="button" class="btn btn-primary" id="confirm" onclick="record_user();">Continuar</button>
-                            <button type="submit" class="btn btn-success " id="show-item3" hidden disabled>Registrar</button>
+                            <button type="submit" class="btn btn-success" id="show-item3" hidden disabled>Registrar</button>
                         </div>
                     </form>
                 </div>

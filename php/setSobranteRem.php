@@ -13,8 +13,9 @@ $nombre = $res -> nombre;
 $peso = $res -> peso;
 $desc = $res -> descripcion;
 $fecha = $res -> fechahoy;
+$area = $res -> area;
 
-function addRemanente($nombre,$peso_kg,$descripcion,$fechaprod) {
+function addRemanente($nombre,$peso_kg,$descripcion,$fechaprod,$area) {
     include('conexion.php');
     $produccion_id = consultaProduccion($fechaprod);
     $res_produccion_id = mysqli_fetch_assoc($produccion_id);
@@ -25,11 +26,17 @@ function addRemanente($nombre,$peso_kg,$descripcion,$fechaprod) {
         if (mysqli_num_rows($remExistente) > 0) {
             $rem_id = mysqli_fetch_assoc($remExistente);
             $id_remanente = $rem_id['id'];
-            $addRem = mysqli_query($conexion,"INSERT INTO $tb_rem_produccion (prod_id,remanente_id) VALUES ($id_prod,$id_remanente)");
-            if ($addRem == true) {
-                $response = '1';
+            $area_id = searchAreaID($area);
+            if ($area_id != 0) {
+                $addRem = mysqli_query($conexion,"INSERT INTO $tb_rem_produccion (prod_id,remanente_id,area_id) VALUES ($id_prod,$id_remanente,$area_id)");
+                if ($addRem == true) {
+                    $response = '1';
+                }
+                if ($addRem == false) {
+                    $response = '0';
+                }
             }
-            if ($addRem == false) {
+            if ($area_id == 0) {
                 $response = '0';
             }
         }
@@ -45,7 +52,7 @@ function addRemanente($nombre,$peso_kg,$descripcion,$fechaprod) {
 }
 
 if (isset($fecha)) {
-    $resultado = addRemanente($nombre,$peso,$desc,$fecha);
+    $resultado = addRemanente($nombre,$peso,$desc,$fecha,$area);
     echo $resultado;
 } else{
     echo '0';

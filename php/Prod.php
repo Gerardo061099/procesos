@@ -29,7 +29,6 @@ switch ($opcion) {
         $query1 = "SELECT p_p_e.id AS id, e.Nombre AS nombre, e.Apellidos  AS apellidos, p.clave AS clave, p_p_e.Aceptadas AS Aceptadas, p_p_e.Rechazadas AS Rechazadas FROM $tb_piezas_produccion p_p_e INNER JOIN $tb_empleados e ON p_p_e.id_emp = e.id INNER JOIN $tb_piezas p ON p_p_e.id_pz = p.id WHERE fecha = curdate()";
         $consulta = mysqli_query($conexion, $query1);
         $data = mysqli_fetch_all($consulta, MYSQLI_ASSOC);
-        //$data = $consulta->fetch_all(MYSQLI_ASSOC);
         break;
         //? Consumos de producción
     case 2:

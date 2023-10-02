@@ -114,6 +114,42 @@ if (isset($_SESSION['id_user'])) {
             </footer>
         </div>
     </div>
+    <aside class="container-prod">
+        <div class="card " style="padding: 20px 20px;">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#fundicion1" type="button" role="tab" aria-controls="home" aria-selected="true">Fundicion 1</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#fundicion2" type="button" role="tab" aria-controls="profile" aria-selected="false">Fundicion 2</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#empaque" type="button" role="tab" aria-controls="contact" aria-selected="false">Empaque</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#lavado" type="button" role="tab" aria-controls="contact" aria-selected="false">Lavado</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#lija" type="button" role="tab" aria-controls="contact" aria-selected="false">Lija</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#pintura" type="button" role="tab" aria-controls="contact" aria-selected="false">Pintura</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#tornos" type="button" role="tab" aria-controls="contact" aria-selected="false">Tornos</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="fundicion1" role="tabpanel" aria-labelledby="home-tab">Inicio Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur facilis iste eos tempora quas recusandae, iusto eius vel magni animi eveniet est voluptas neque maxime et ratione beatae nemo perspiciatis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero illo excepturi, consequuntur consectetur, facere accusamus, hic ipsum nisi numquam nulla itaque? Praesentium quisquam molestiae rem hic vitae, ipsa fugit dolorem! </div>
+                <div class="tab-pane fade" id="fundicion2" role="tabpanel" aria-labelledby="profile-tab">Perfil Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur iure ea molestiae tempore dolor, veniam, maxime rerum laborum deserunt at facilis voluptatibus eligendi dolorum ullam tempora, ad nostrum numquam architecto.</div>
+                <div class="tab-pane fade" id="empaque" role="tabpanel" aria-labelledby="contact-tab">Contacto Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti porro, provident corrupti dolores, eius itaque nam odit ratione deserunt iusto fugit repellendus, nisi quam voluptatem veniam? Necessitatibus porro repellat quas.</div>
+                <div class="tab-pane fade" id="lavado" role="tabpanel" aria-labelledby="contact-tab">Contacto Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti porro, provident corrupti dolores, eius itaque nam odit ratione deserunt iusto fugit repellendus, nisi quam voluptatem veniam? Necessitatibus porro repellat quas.</div>
+                <div class="tab-pane fade" id="lija" role="tabpanel" aria-labelledby="contact-tab">Contacto Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti porro, provident corrupti dolores, eius itaque nam odit ratione deserunt iusto fugit repellendus, nisi quam voluptatem veniam? Necessitatibus porro repellat quas.</div>
+                <div class="tab-pane fade" id="pintura" role="tabpanel" aria-labelledby="contact-tab">Contacto Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti porro, provident corrupti dolores, eius itaque nam odit ratione deserunt iusto fugit repellendus, nisi quam voluptatem veniam? Necessitatibus porro repellat quas.</div>
+                <div class="tab-pane fade" id="tornos" role="tabpanel" aria-labelledby="contact-tab">Contacto Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti porro, provident corrupti dolores, eius itaque nam odit ratione deserunt iusto fugit repellendus, nisi quam voluptatem veniam? Necessitatibus porro repellat quas.</div>
+            </div>
+        </div>
+    </aside>
     <div class="container-init-tags grid">
         <div class=" bg-dark text-white container-tags Lingote_Ret" draggable="true">
             <div class="img-remanente">
@@ -203,8 +239,8 @@ if (isset($_SESSION['id_user'])) {
                                     <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-hands-holding-circle"></i> Piezas Producidas</h5>
                                     <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body text-black">
-                                    <form class="row g-3" id="frm-add-users">
+                                <form id="frm-production-t">
+                                    <div class="modal-body text-black row g-3">
                                         <div class="col-md-5">
                                             <label for="pza_aceptada">Pzas Aceptadas:</label>
                                             <p id="pza_aceptada"></p>
@@ -229,11 +265,11 @@ if (isset($_SESSION['id_user'])) {
                                             <label for="mod-total-kg">Total (kg):</label>
                                             <p id="kg_tot_prod"></p>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-success btn-sm">Registrar</button>
-                                </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-success btn-sm">Registrar</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -389,7 +425,7 @@ if (isset($_SESSION['id_user'])) {
         </div>
     </main>
     <section class="container-prod">
-        <div class="card w-100 text-center bg-dark text-white ">
+        <div class="card w-100 text-center bg-dark text-white">
             <div class="card-header">
                 <i class="fa-solid fa-chart-column"></i>
                 Total de piezas elaboradas por Mes
@@ -404,7 +440,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </div>
     </section>
-
+    
     <script src="https://kit.fontawesome.com/282ec8cabc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -417,5 +453,6 @@ if (isset($_SESSION['id_user'])) {
     <script src="js/script_base.js"></script>
     <script src="js/resgistrsoProduccion.js"></script>
     <script src="js/functionradio.js" type="module"></script>
+    <script src="js/modal_totales.js" type="module"></script>
 </body>
 </html>

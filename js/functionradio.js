@@ -22,21 +22,23 @@ $(document).ready(function () {
         var ultimaProd = ultimaProduccion()
         var op
         var data
+        let area
         if (nombre === 'Choose..' || peso === '') alert('Algunos datos estan vacio')
         if (nombre !== 'Choose..' && peso !== '') {
             opcion = 1
+            area = 'Fundicion 1'
             console.log(fecha)
             for (var btn of btn_radio) {
                 if (btn.checked && btn.value === 'Materia prima') {
                     op = 1 //opcion para insertar materia prima en la BD
                     console.log(`${nombre} ${peso} ${btn.value}`)
-                    data = JSON.stringify({"nombre": nombre,"cantidad": peso,"op": op,"fecha": fecha})
+                    data = JSON.stringify({"nombre": nombre,"cantidad": peso,"op": op,"fecha": fecha,"area":area})
                 }
                 if (btn.checked && btn.value === 'Remanente') { 
                     op = 2 //opcion para insertar remanente en la BD
                     descripcion = 'utilizado'
                     console.log(`${nombre} ${peso} ${btn.value}`)
-                    data = JSON.stringify({"nombre": nombre,"cantidad": peso,"descripcion": descripcion,"op": op,"fecha": fecha})
+                    data = JSON.stringify({"nombre": nombre,"cantidad": peso,"descripcion": descripcion,"op": op,"fecha": fecha,"area":area})
                 }
             }
             $.ajax({
