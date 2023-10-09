@@ -304,13 +304,13 @@
     padding: 0 5px;
 }
 
-.container-prod {
+.container-prod,.container-empleados{
     width: 100%;
     padding: 10px 15px;
     display: flex;
 }
 
-.container-table-registros-produccion {
+.container-table-registros-produccion,.container-table-empleados {
     padding-top: 10px ;
     padding-bottom: 10px;
 }

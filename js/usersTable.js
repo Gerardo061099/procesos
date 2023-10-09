@@ -60,7 +60,6 @@ $(document).ready(function () {
         var pass = $.trim($('#passmodal').val())
         var estado = $.trim($('#estadomodal').val())
         var role = $.trim($('#rolemodal').val())
-        // alert(id + ' ' +nombre + ' ' + apellidos + ' ' + numControl + ' ' + usuario + ' ' + pass + ' ' + estado + ' ' + role)
         if (pass === '') {
             $.ajax({
                 type: 'POST',
@@ -188,8 +187,7 @@ $(document).ready(function () {
             $.ajax({
                 type: 'POST',
                 url: 'php/Prod.php',
-                data: {nombre:nombre,apellidos:apellidos,numControl:numControl,usuario:usuario,pass:pass,opcion:opcion
-                },
+                data: {nombre:nombre,apellidos:apellidos,numControl:numControl,usuario:usuario,pass:pass,opcion:opcion},
                 dataType: 'json',
                 success: function (data) {
                     if (data !== '') {
@@ -239,7 +237,7 @@ $(document).ready(function () {
             alertMessage('Falta informacion','warning');
             window.setTimeout(function() {
                 $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                    $(this).remove();
+                    $(this).remove()
                 })
             }, 5000)
         }

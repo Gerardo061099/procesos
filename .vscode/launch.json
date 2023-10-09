@@ -9,7 +9,7 @@
             "type": "php",
             "request": "launch",
             "port": 9003,
-            "program": "/var/www/html/procesos/php/totalProduction.php"
+            "program": "/var/www/html/procesos/php/dataselectArea.php"
         },
         {
             "name": "Launch currently open script",

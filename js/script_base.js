@@ -80,7 +80,7 @@ function showInfoMoldeador() {
                 // mostramos un alert mediante una funcion previamente creada con dos parametros (mensaje,tipo = danger, success etc)
                 alertMessage('No existe ningun usuario con el número de control ingresado o este corresponda a otra area','danger')
                 window.setTimeout(function() {
-                    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                    $(".alert").fadeTo(500, 0).slideUp(500, function() {
                         $(this).remove();
                     })
                 }, 5000)

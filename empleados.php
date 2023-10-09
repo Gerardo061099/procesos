@@ -71,8 +71,8 @@ if (isset($_SESSION['id_user'])) {
         <div class="bread-crum ">
             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Gestion de producción</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Producción</li>
+                    <li class="breadcrumb-item"><a href="#">Empleados</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Productividad</li>
                 </ol>
             </nav>
         </div>
@@ -114,24 +114,65 @@ if (isset($_SESSION['id_user'])) {
             </footer>
         </div>
     </div>
-    <main class="container-prod">
-        <section class="container-table-registros-produccion">
-            <div class="card w-40 bg-dark text-white contenedor-tb-produccion">
+    <main class="container-empleados d-flex justify-content-center">
+        <section class="container-table-empleados">
+            <div class="card bg-dark bg-gradient text-white container-card">
                 <div class="card-header">
                     <h5 class="titulo-collaps">Lista de empleados</h5>
                     <div class="plus d-grid gap-2 d-md-flex justify-content-md-end">
                         <span data-bs-toggle="tooltip" data-bs-placement="top" title="Registro de piezas elaboradas">
-                            <button type="button" class="btn btn-success btn-sm text-white" id="nuevoRegistro">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                            <button type="button" class="btn btn-success btn-sm text-white" id="addEmpleado">
+                                <i class="fa-solid fa-user-plus"></i>
                             </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="Modal_empleados" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-dark text-white">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="title_form"></h5>
+                                            <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form id="registred-empleado">
+                                            <div class="modal-body px-10">
+                                                <h6>Ingresa los datos requeridos a continuacion:</h6>
+                                                <h6>Ingresa los datos personales del empleado</h6>
+                                                <div class="input-group input-group-sm mb-3">
+                                                    <span class="input-group-text">Nombre y apellido</span>
+                                                    <input type="text" aria-label="First name" class="form-control form-control-sm bg-dark text-white" id="nombre_e">
+                                                    <input type="text" aria-label="Last name" class="form-control form-control-sm bg-dark text-white" id="apellidos_e">
+                                                </div>
+                                                <h6 >Número de empledo del recibo de nomina</h6>
+                                                <div class="input-group input-group-sm mb-3">
+                                                    <span class="input-group-text" id="inputGroup-sizing-sm">N° Empleado</span>
+                                                    <input type="text" class="form-control bg-dark text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="num_e">
+                                                </div>
+                                                <h6>Indica si es Trabajador o Estudiante(Practicas Profesionales)</h6>
+                                                <div class="input-group input-group-sm mb-3">
+                                                    <label class="input-group-text" for="select_empleados">Tipo empleado</label>
+                                                    <select class="form-select bg-dark text-white" id="select_empleados" name="select_empleados">
+                                                    </select>
+                                                </div>
+                                                <h6>Area en el cual se desempeña laborando</h6>
+                                                <div class="input-group input-group-sm mb-3">
+                                                    <label class="input-group-text" for="select_area">Area</label>
+                                                    <select class="form-select bg-dark text-white" id="select_area" name="select_area">
+                                                    </select>
+                                                </div>
+                                                <div id="div_toggle"></div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                                                <button type="submit" class="btn btn-light text-dark btn-sm">Registrar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </span>
-                        <button class="btn btn-dark btn-sm" id="boton-b" onclick="changeicon('plus');" type="button" data-bs-toggle="collapse" data-bs-target="#productiones" aria-expanded="false" aria-controls="productiones">
-                            <i class="fa-solid fa-minus" id="plus"></i>
-                        </button>
                     </div>
                 </div>
                 <div class="collapse show" id="tbempleados">
-                    <div class="card-body">
+                    <div class="card-body py-3">
                         <div class="table-responsive">
                             <table id="tabla_empleados" class="table table-success table-striped">
                                 <thead>
@@ -143,6 +184,7 @@ if (isset($_SESSION['id_user'])) {
                                         <th scope="col">Tipo de empleado</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Area</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -160,6 +202,7 @@ if (isset($_SESSION['id_user'])) {
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript" src="DataTables/datatables.min.js"></script>
-    <script src="js/tbempleados.js"></script>
+    <script src="js/script_base.js"></script>
+    <script src="js/tbempleados.js" type="module"></script>
 </body>
 </html>
