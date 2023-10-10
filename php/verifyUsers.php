@@ -1,7 +1,13 @@
 <?php
+/**
+ * 
+ */
+include( 'conexion.php' );
+/**
+ * Codigo by: Gerardo Jimenez Castillo
+ */
 $mail = $_POST[ 'mail' ];
 $password = $_POST[ 'password' ];
-include( 'conexion.php' );
 
 if ( $mail != '' && $password != '' ) {
     $resultado = mysqli_query( $conexion, "SELECT password_user FROM $tb_users WHERE name_user = '$mail'" );

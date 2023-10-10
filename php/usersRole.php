@@ -1,5 +1,11 @@
 <?php
+/**
+ * 
+ */
 include('conexion.php');
+/**
+ * Codigo by: Gerardo Jimenez Castillo
+ */
 $id = $_POST['id'];
 $role = $_POST['role'];
 $opcion = $_POST['opcion'];

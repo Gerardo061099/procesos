@@ -18,6 +18,8 @@ $pwd = $_POST[ 'pwd' ];
                 $_SESSION['sesion'] = 1;
             }
         }
+    } else {
+        header('location: index.php');
     }
 if ( $_SESSION[ 'sesion' ]<1 || $_SESSION[ 'sesion' ]>1 ) {
     header( 'Location: index.php' );

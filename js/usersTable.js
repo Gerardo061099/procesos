@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 $(document).ready(function () {
     var opcion
     var fila
@@ -61,7 +60,6 @@ $(document).ready(function () {
         var pass = $.trim($('#passmodal').val())
         var estado = $.trim($('#estadomodal').val())
         var role = $.trim($('#rolemodal').val())
-        // alert(id + ' ' +nombre + ' ' + apellidos + ' ' + numControl + ' ' + usuario + ' ' + pass + ' ' + estado + ' ' + role)
         if (pass === '') {
             $.ajax({
                 type: 'POST',
@@ -185,56 +183,65 @@ $(document).ready(function () {
         var numControl = $.trim($('#num_empleado').val())
         var usuario = $.trim($('#newUser').val())
         var pass = $.trim($('#pwd').val())
-        $.ajax({
-            type: 'POST',
-            url: 'php/Prod.php',
-            data: {
-                nombre:nombre,
-                apellidos:apellidos,
-                numControl:numControl,
-                usuario:usuario,
-                pass:pass,
-                opcion:opcion
-            },
-            dataType: 'json',
-            success: function (data) {
-                if (data !== '') {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Se agrego un usuario de forma exitosa!!'
-                    })
-                } else {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'error',
-                        title: 'Ocurrio un error inesperado'
-                    })
+        if (nombre !== '' && apellidos !== '' && numControl !== '' && usuario !== '' && pass !== '') {
+            $.ajax({
+                type: 'POST',
+                url: 'php/Prod.php',
+                data: {nombre:nombre,apellidos:apellidos,numControl:numControl,usuario:usuario,pass:pass,opcion:opcion},
+                dataType: 'json',
+                success: function (data) {
+                    if (data !== '') {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Se agrego un usuario de forma exitosa!!'
+                        })
+                    } else {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Verifique bien su infromación'
+                        })
+                    }
+                    $('#add_user').modal('hide')
+                    $('#frm-add-users').trigger('reset')
+                    $('#show-item1').attr('hidden','true')
+                    $('#show-item2').attr('hidden','true')
+                    $('#show-item3').attr('hidden', 'true')
+                    $('#show-pass').attr('hidden','true')
+                    $('#confirm').removeAttr('hidden')
+                    showUsersRole.ajax.reload(null, false)
                 }
-                $('#add_user').modal('hide')
-                showUsersRole.ajax.reload(null, false)
-            }
-        })
+            })
+        } else {
+            alertMessage('Falta informacion','warning');
+            window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).remove()
+                })
+            }, 5000)
+        }
+        
     })
 
     $(document).on('click','#editarUser', function(e) {

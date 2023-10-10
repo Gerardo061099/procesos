@@ -26,10 +26,12 @@ if (isset($_SESSION['id_user'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nominas</title>
+    <link rel="shortcut icon" href="img/data-analytics.png">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
-    <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.13.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="css/styles2.css">
+    <!--<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.13.2/css/dataTables.bootstrap5.min.css">-->
 </head>
 
 <body class="c_principal">
@@ -71,7 +73,10 @@ if (isset($_SESSION['id_user'])) {
         </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V &reg;</h5>
+                <div class="container-perfil">
+                    <img src="img/man.png" alt="" class="img-perfil">
+                    <h5 class="role-text" style="color: white;"><?= $user['rolename'] ?></h5>
+                </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="divicion"></div>
@@ -84,7 +89,7 @@ if (isset($_SESSION['id_user'])) {
                         <ul class="menu-lista">
                             <li class="options"><a href="produccion.php" class="links"><i class="fa-solid fa-industry"></i> Producción</a></li>
                             <li class="options"><a href="consumos.php" class="links"><i class="fa-solid fa-cash-register"></i> Consumos</a></li>
-                            <li class="options"><a href="#" class="links"><i class="fa-regular fa-money-bill-1"></i> Costos de producción</a></li>
+                            <li class="options"><a href="#" class="links"><i class="fa-solid fa-dollar-sign"></i> Costos de producción</a></li>
                         </ul>
                     </div>
                     <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i> Resultados de producción</a></li>
@@ -99,8 +104,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
             <footer class="footer">
                 <div class="container-perfil">
-                    <img src="img/man.png" alt="" class="img-perfil">
-                    <h5 class="role-text" style="color: white;"><?= $user['rolename'] ?></h5>
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V &reg;</h5>
                 </div>
             </footer>
         </div>
@@ -117,28 +121,54 @@ if (isset($_SESSION['id_user'])) {
             <h5 class="titulo-collaps">Sueldos y Salarios</h5>
             <div class="button-remanente-retorno">
                 <div class="row g-3 align-items-center contenedor-funciones-nomina">
-                    <div class="col-auto">
-                        <input type="file" id="" class="form-control form-control-sm bg-dark text-white">
-                    </div>
-                    <div class="col-auto">
-                        <label for="cantidad" class="col-form-label">Periodo:</label>
-                    </div>
-                    <div class="col-auto">
-                        <input type="date" id="fecha1" class="form-control form-control-sm bg-dark text-white">
-                    </div>
-                    <div class="col-auto"><p> al </p></div>
-                    <div class="col-auto">
-                        <input type="date" id="fecha2" class="form-control form-control-sm bg-dark text-white">
-                    </div>
+                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#Upfiles"><i class="fa-solid fa-file-circle-plus"></i></button>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-light btn-sm" onclick="changeicon('pluss');" type="button" data-bs-toggle="collapse" data-bs-target="#consumos" aria-expanded="false" aria-controls="collapseExample">
+                    <button type="button" class="btn btn-light btn-sm" onclick="changeicon('pluss');" type="button" data-bs-toggle="collapse" data-bs-target="#tabla-nomina" aria-expanded="false" aria-controls="collapseExample">
                         <i class="fa-solid fa-minus" id="pluss"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="collapse show" id="consumos">
+        <div class="modal fade" id="Upfiles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sube tu archivo Excel</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="frmNewConsumos">
+                    <div class="modal-body">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <Label for="filexcel" class="col-form-label text-white">Load File:</Label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="file" id="filexcel" class="form-control form-control-sm bg-dark text-white" accept="xlsx">
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="cantidad" class="col-form-label text-white">Periodo:</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="date" id="fecha1" class="form-control form-control-sm bg-dark text-white">
+                            </div>
+                            <div class="col-auto text-white">al</div>
+                            <div class="col-auto">
+                                <input type="date" id="fecha2" class="form-control form-control-sm bg-dark text-white">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Subir archivo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        <div class="collapse show" id="tabla-nomina">
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="tb-consumos" class="table table-striped tabla-prod-today">
@@ -157,44 +187,15 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </div>
     </div>
-    <div class="modal fade" id="consumosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content bg-dark">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Consumos</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form id="frmNewConsumos">
-                    <div class="modal-body row g-3 align-items-center">
-                        <div class="col-auto">
-                            <label for="concepto" class="col-form-label text-white">Concepto:</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" id="concepto" class="form-control form-control-sm bg-dark text-white">
-                        </div>
-                        <div class="col-auto">
-                            <label for="cantidad" class="col-form-label text-white">Cantidad:</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="date" id="cantidad" class="form-control form-control-sm bg-dark text-white">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary btn-sm">Registrar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/282ec8cabc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <!--<script type="text/javascript" src="DataTables/datatables.min.js"></script>-->
     <script src="js/script_base.js"></script>
-    <script src="js/addConsumos.js"></script>
+    <script src="js/nomina.js"></script>
 </body>
 
 </html>

@@ -3,8 +3,9 @@
  * Tabla que muestra la produccion de fundicion 1 y sus funciones de CRUD
  */
 $(document).ready(function () {
-    var opcion
-    opcion = 1
+    var opcion = 1
+    
+    console.log(data)
     tablaProduccion = $('#tableProduccion').DataTable({
         'ajax':{
             'url':'php/Prod.php',
@@ -19,11 +20,11 @@ $(document).ready(function () {
             {'data':'clave'},
             {'data':'Aceptadas'},
             {'data':'Rechazadas'},
-            {'defaultContent':"<div class='text-center'><div class='btn-group'><button class='btn btn-warning btn-sm btnEditar'><i class='fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='fa-solid fa-trash-can'></i></button></div></div>"}
+            //{'defaultContent':"<div class='text-center'><div class='btn-group'><button class='btn btn-warning btn-sm btnEditar'><i class='fa-solid fa-pen-to-square'></i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='fa-solid fa-trash-can'></i></button></div></div>"}
         ]
     })
     $('#frm-editProd').submit(function(e){                         
-        e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
+        e.preventDefault() //evita el comportambiento normal del submit, es decir, recarga total de la página
         id = $.trim($('#id').val())
         nombre = $.trim($('#nombre').val())
         apellidos = $.trim($('#apellidos').val())
@@ -44,7 +45,7 @@ $(document).ready(function () {
                     opcion:opcion
                 },    
                 success: function(data) {
-                    tablaUsuarios.ajax.reload(null, false);
+                    tablaProduccion.ajax.reload(null, false)
                 }
             })
         $('#modalCRUD').modal('hide')     			
@@ -52,7 +53,7 @@ $(document).ready(function () {
 
     var fila
     $(document).on('click','.btnEditar',function () {
-        opcion = 2
+        opcion = 11
         fila = $(this).closest('tr')
         id = fila.find('td:eq(0)').text()
         nombre = fila.find('td:eq(1)').text()
@@ -69,6 +70,23 @@ $(document).ready(function () {
         $('#editProd').modal('show')
     })
     $(document).on('click','.btnBorrar',function (){
-        return console.log('Presionaste el boton eliminar')
+        opcion = 11 // todo: opcion para eliminar
+        fila = $(this)
+        id = parseInt($(this).closest('tr').find('td:eq(0)').text())
+        resp = confirm(`¿Estás seguro de eliminar el registro ${id} ?`)
+        if (resp) {
+            $.ajax({
+                type: 'POST',
+                url: 'php/Prod.php',
+                data: {id:id,opcion:opcion},
+                dataType: 'json',
+                success: function () {
+                    alert('Función en desarrollo...')
+                    //tablaConsumos.row(fila.parents('tr')).remove().draw();
+                }
+            })
+        } else {
+            alert('Accion cancelada')
+        }
     })
 })

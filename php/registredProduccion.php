@@ -1,5 +1,11 @@
 <?php
+/**
+ * 
+ */
 include( 'conexion.php' );
+/**
+ * Codigo by: Gerardo Jimenez Castillo
+ */
 $id = $_POST[ 'idEmpleado' ];
 $clavePieza = $_POST[ 'clavePieza' ];
 $pzasAcept = $_POST[ 'pzasAcept' ];
