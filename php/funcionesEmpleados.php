@@ -26,6 +26,12 @@ function getAreatoEmpleados() {
     include('close_conexion.php');
     return $conArea;
 }
+function getNumeroEmpleado($num_e) {
+    include('conexion.php');
+    $queryNumEmpleado = mysqli_query($conexion,"SELECT nombre,apellidos FROM $tb_empleados WHERE num_empleado = $num_e");
+    include('close_conexion.php');
+    return $queryNumEmpleado;
+}
 
 function addEmpleado($nombre_e,$apellidos_e,$num_e,$tipo_id,$status,$area_id) {
     include("conexion.php");
@@ -61,4 +67,12 @@ function deleteRegistro($id_e) {
         echo $e;
     }
     include('close_conexion.php');
+}
+function updateRegistroEm($id_reg,$nombre_e,$apellidos_e,$num_e,$tipo_id,$status_e,$area_id) {
+    include('conexion.php');
+    try {
+        $updateinfoEmpleado = mysqli_query($conexion,"UPDATE $tb_empleados SET Nombre = '$nombre_e',Apellidos = '$apellidos_e',num_empleado = $num_e,tipo_id = $tipo_id,status_e = $status_e,area_id = $area_id WHERE id = $id_reg");
+    } catch (Exception $e) {
+        echo $e;
+    }
 }

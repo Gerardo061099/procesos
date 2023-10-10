@@ -34,7 +34,15 @@ switch ($operacion) {
         }
         break;
     case 3:
+        if($num_e !== null) {
+        $queryNumeroEmpleado = getNumeroEmpleado($num_e);
+            if(mysqli_num_rows($queryNumeroEmpleado) < 1) {
 
+            } else {
+
+            }
+        }
+        
 
         break;
     case 4:

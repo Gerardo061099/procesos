@@ -97,11 +97,12 @@ $(document).ready(function () {
         let datos
         nombre_empleado = $.trim($('#nombre_e').val())   
         apellidos = $.trim($('#apellidos_e').val())
-        num_empleado = $.trim($('#num_e').val())   
+        num_empleado = $.trim($('#num_e').val())
         area = $.trim($('#select_area').val())
         tipo_t = $.trim($('#select_empleados').val())
-        if (nombre_empleado !== ''|| apellidos !== '' || num_empleado !== '' || area !== '' || tipo_t !== '') {
-            datos = JSON.stringify({'nombre':nombre_empleado,'apellidos':apellidos,'num_e':num_empleado,'area_e':area,'tipo_t':tipo_t,'registro_id':registro_id,'opcion':opcion,'status_e':status_em})
+        if(num_empleado == '') num_empleado = null
+        if (nombre_empleado !== ''|| apellidos !== '' || area !== '' || tipo_t !== '') {
+        datos = JSON.stringify({'nombre':nombre_empleado,'apellidos':apellidos,'num_e':num_empleado,'area_e':area,'tipo_t':tipo_t,'registro_id':registro_id,'opcion':opcion,'status_e':status_em})
             $.ajax({
                 type: "POST",
                 url: "php/empleadosInfo.php",
@@ -110,8 +111,6 @@ $(document).ready(function () {
                 success: function (data) {
                     if (data == 1) setMessageAlert(mensaje,'success')
                     if (data == 0) setMessageAlert('Ohh no a ocurrido un problema','error')
-                    console.log(data)
-                    
                     tablaempleados.ajax.reload(null,false)
                 }
             })
@@ -143,10 +142,12 @@ $(document).ready(function () {
         if (status_e == "En planta") {
             $('#status_toggle').attr('checked', true)
             $('#check_toggle').text('En planta')
+            status_em = 1
         }
         if (status_e == "Inactivo") {
             $('#status_toggle').attr('checked', false)
             $('#check_toggle').text('Inactivo')
+            status_em = 0
         }
         let area_op = fila.find('td:eq(6)').text()
         queryIdselects(tipo_op)
@@ -169,7 +170,6 @@ $(document).ready(function () {
             console.log(status_em)
             $('#check_toggle').text('Inactivo')
         }
-        console.log(`Toggle ${toggle}`)
     })
 
     $(document).on('click','.btnBorrar', function () {
