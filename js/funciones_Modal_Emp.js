@@ -64,6 +64,6 @@ function showDataResponseArea(data) {
 
 export function createCheckToggleDOM(element) {
     let togglechk = document.createElement('div')
-    togglechk.innerHTML = '<div class="form-check form-switch" id="div_child_toggle"><input class="form-check-input" type="checkbox" role="switch" id="status_toggle" checked><label class="form-check-label" for="status_toggle" id="check_toggle"></label></div>'
+    togglechk.innerHTML = '<div class="form-check form-switch" id="div_child_toggle"><input class="form-check-input" type="checkbox" role="switch" id="status_toggle"><label class="form-check-label" for="status_toggle" id="check_toggle"></label></div>'
     element.append(togglechk)
 }

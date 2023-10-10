@@ -20,6 +20,7 @@ $(document).ready(function () {
     let fila
     let tipo_t
     let status_e
+    let status_em
     let div_child_toggle
     let divToggle
     opcion = 1
@@ -75,7 +76,7 @@ $(document).ready(function () {
         $('#title_form').text('Nuevos empleados')
         registro_id = null
         opcion = 2
-        status_e = 1
+        status_em = 1
         mensaje = "El usuario se agrego exitosamente!!"
         divToggle = document.getElementById('div_toggle')
         div_child_toggle = document.getElementById ('div_child_toggle')
@@ -100,7 +101,7 @@ $(document).ready(function () {
         area = $.trim($('#select_area').val())
         tipo_t = $.trim($('#select_empleados').val())
         if (nombre_empleado !== ''|| apellidos !== '' || num_empleado !== '' || area !== '' || tipo_t !== '') {
-            datos = JSON.stringify({'nombre':nombre_empleado,'apellidos':apellidos,'num_e':num_empleado,'area_e':area,'tipo_t':tipo_t,'registro_id':registro_id,'opcion':opcion,'status_e':status_e})
+            datos = JSON.stringify({'nombre':nombre_empleado,'apellidos':apellidos,'num_e':num_empleado,'area_e':area,'tipo_t':tipo_t,'registro_id':registro_id,'opcion':opcion,'status_e':status_em})
             $.ajax({
                 type: "POST",
                 url: "php/empleadosInfo.php",
@@ -139,6 +140,14 @@ $(document).ready(function () {
         let num_op = fila.find('td:eq(3)').text()
         let tipo_op = fila.find('td:eq(4)').text()
         status_e = fila.find('td:eq(5)').text()
+        if (status_e == "En planta") {
+            $('#status_toggle').attr('checked', true)
+            $('#check_toggle').text('En planta')
+        }
+        if (status_e == "Inactivo") {
+            $('#status_toggle').attr('checked', false)
+            $('#check_toggle').text('Inactivo')
+        }
         let area_op = fila.find('td:eq(6)').text()
         queryIdselects(tipo_op)
         queryIdselectsarea(area_op)
@@ -146,6 +155,21 @@ $(document).ready(function () {
         $('#apellidos_e').val(apellidos_op)
         $('#num_e').val(num_op)
         $('#Modal_empleados').modal('show')
+    })
+    $(document).on('change','#status_toggle', function (e) {
+        e.preventDefault()
+        let toggle = $(this).prop('checked')
+        if (toggle == true) {
+            status_em = 1
+            console.log(status_em)
+            $('#check_toggle').text('En planta')
+        }
+        if (toggle == false) {
+            status_em = 0
+            console.log(status_em)
+            $('#check_toggle').text('Inactivo')
+        }
+        console.log(`Toggle ${toggle}`)
     })
 
     $(document).on('click','.btnBorrar', function () {
@@ -174,4 +198,5 @@ $(document).ready(function () {
             setMessageAlert('Accion cancelada','info')
         }
     })
+
 })
