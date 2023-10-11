@@ -39,7 +39,7 @@ function addEmpleado($nombre_e,$apellidos_e,$num_e,$tipo_id,$status,$area_id) {
     $addEmpleado = mysqli_query($conexion,"INSERT INTO $tb_empleados (nombre,apellidos,num_empleado,tipo_id,status_e,area_id) VALUES ('$nombre_e','$apellidos_e',$num_e,$tipo_id,$status,$area_id)");
     return $addEmpleado;
     } catch (Exception $e) {
-        echo $e;
+        return false;
     }
     include("close_conexion.php");
 }
@@ -64,7 +64,7 @@ function deleteRegistro($id_e) {
         $delete_em = mysqli_query($conexion,"DELETE FROM $tb_empleados WHERE id = $id_e");
         return $delete_em;
     } catch (Exception $e) {
-        echo $e;
+        return false;
     }
     include('close_conexion.php');
 }
@@ -72,7 +72,9 @@ function updateRegistroEm($id_reg,$nombre_e,$apellidos_e,$num_e,$tipo_id,$status
     include('conexion.php');
     try {
         $updateinfoEmpleado = mysqli_query($conexion,"UPDATE $tb_empleados SET Nombre = '$nombre_e',Apellidos = '$apellidos_e',num_empleado = $num_e,tipo_id = $tipo_id,status_e = $status_e,area_id = $area_id WHERE id = $id_reg");
+        return $updateinfoEmpleado;
     } catch (Exception $e) {
-        echo $e;
+        return false;
     }
+    include('close_conexion.php');
 }

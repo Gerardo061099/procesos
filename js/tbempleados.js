@@ -101,7 +101,7 @@ $(document).ready(function () {
         area = $.trim($('#select_area').val())
         tipo_t = $.trim($('#select_empleados').val())
         if(num_empleado == '') num_empleado = null
-        if (nombre_empleado !== ''|| apellidos !== '' || area !== '' || tipo_t !== '') {
+        if(nombre_empleado !== '' && apellidos !== "" && area !== '' && tipo_t !== '') {
         datos = JSON.stringify({'nombre':nombre_empleado,'apellidos':apellidos,'num_e':num_empleado,'area_e':area,'tipo_t':tipo_t,'registro_id':registro_id,'opcion':opcion,'status_e':status_em})
             $.ajax({
                 type: "POST",
@@ -157,6 +157,7 @@ $(document).ready(function () {
         $('#num_e').val(num_op)
         $('#Modal_empleados').modal('show')
     })
+
     $(document).on('change','#status_toggle', function (e) {
         e.preventDefault()
         let toggle = $(this).prop('checked')
