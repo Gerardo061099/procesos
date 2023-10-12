@@ -1,7 +1,7 @@
 <?php
 
 $host = 'localhost'; //'192.168.68.120';
-$userdb = 'root';
+$userdb = 'stacks';
 $claveus = 'stacks147852369';
 $nombredb = 'db_aluxsa';//'produccion_aluxsa';
 

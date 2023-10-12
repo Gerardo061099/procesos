@@ -1,4 +1,10 @@
+/**
+ * 
+ */
 
+/**
+ *  Code by: Gerardo Jimenez Castillo
+ */
 export const graphic = document.getElementById('chartProduccion')
 export const year_act = new Date()
 export let año = year_act.getFullYear().toString()
@@ -29,7 +35,6 @@ let graphicBar = new Chart(graphic, {
 
 export function addData(chart, label, newData) {
   chart.data.labels = label
-  
   console.log(newData)
   chart.data.datasets.forEach((dataset) => {
       dataset.data = newData;

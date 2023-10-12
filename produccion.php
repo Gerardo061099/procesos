@@ -68,7 +68,7 @@ if (isset($_SESSION['id_user'])) {
                 <i class="fa-solid fa-bars fa-beat"></i>
             </a>
         </div>
-        <div class="bread-crum ">
+        <div class="bread-crum">
             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Gestion de producción</a></li>
@@ -102,7 +102,7 @@ if (isset($_SESSION['id_user'])) {
                     <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu2" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle2');"><i class="fa-solid fa-people-group"></i> Empleados <i class="fa-solid fa-angle-down" id="icon-angle2"></i></a></li>
                     <div class="collapse sub-menu" id="sub-menu2">
                         <ul class="menu-lista">
-                            <li class="options"><a href="#" class="links"><i class="fa-solid fa-chart-column"></i> Productividad</a></li>
+                            <li class="options"><a href="empleados.php" class="links"><i class="fa-solid fa-chart-column"></i> Productividad</a></li>
                         </ul>
                     </div>
                 </ul>
@@ -226,6 +226,18 @@ if (isset($_SESSION['id_user'])) {
                                 </thead>
                                 <tbody>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">N° Control</th>
+                                        <th scope="col">Operador</th>
+                                        <th scope="col">Apellidos</th>
+                                        <th scope="col">Pieza</th>
+                                        <th scope="col">Aceptadas</th>
+                                        <th scope="col">Rechazadas</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

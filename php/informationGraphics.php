@@ -9,8 +9,8 @@ include('funcionesgraphics.php');
 $data = file_get_contents('php://input');
 $decode_data = json_decode($data);
 
-$año = $decode_data -> año;
-$meses = $decode_data -> meses;
+$año = '2023';//$decode_data -> año;
+$meses = ['1','2','3','4','5','6','7','8','9','10','11','12'];//$decode_data -> meses;
 
 $array_meses = $meses;
 $array_pzasTotalPorMes = [];

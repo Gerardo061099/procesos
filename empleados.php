@@ -31,6 +31,7 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="css/styles2.css">
     <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.13.2/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
 </head>
 
 <body class="c_principal">
@@ -92,7 +93,7 @@ if (isset($_SESSION['id_user'])) {
                     <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle');"><i class="fa-solid fa-list-check"></i> Gestion de produccion <i class="fa-solid fa-angle-up" id="icon-angle"></i></a></li>
                     <div class="collapse show sub-menu" id="sub-menu">
                         <ul class="menu-lista">
-                            <li class="options option-active-sub-me"><a href="#" class="links"><i class="fa-solid fa-industry"></i> Producción</a></li>
+                            <li class="options option-active-sub-me"><a href="produccion.php" class="links"><i class="fa-solid fa-industry"></i> Producción</a></li>
                             <li class="options"><a href="consumos.php" class="links"><i class="fa-solid fa-cash-register"></i> Consumos</a></li>
                             <li class="options"><a href="#" class="links"><i class="fa-solid fa-dollar-sign"></i> Costos de producción</a></li>
                         </ul>
@@ -174,7 +175,8 @@ if (isset($_SESSION['id_user'])) {
                 <div class="collapse show" id="tbempleados">
                     <div class="card-body py-3">
                         <div class="table-responsive">
-                            <table id="tabla_empleados" class="table table-success table-striped">
+                            <!-- Para que las tabla sea responsive con Data Tables usa la clase: display responsive nowrap. En la etiqueta table-->
+                            <table id="tabla_empleados" class="table table-success table-striped ">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -189,6 +191,18 @@ if (isset($_SESSION['id_user'])) {
                                 </thead>
                                 <tbody>
                                 </tbody>
+                                <tfoot>
+                                <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Operador</th>
+                                        <th scope="col">Apellidos</th>
+                                        <th scope="col">N° Control</th>
+                                        <th scope="col">Tipo de empleado</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Area</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -202,6 +216,7 @@ if (isset($_SESSION['id_user'])) {
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="js/script_base.js"></script>
     <script src="js/tbempleados.js" type="module"></script>
 </body>
