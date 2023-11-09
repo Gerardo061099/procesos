@@ -24,6 +24,9 @@ switch ($operacion) {
         $data = mysqli_fetch_all($resultquery,MYSQLI_ASSOC); 
         break;
     case 2:
+        if ($num_e == null){
+            $num_e = 'null';
+        }
         $resultadd_e = addEmpleado($nombre,$apellidos,$num_e,$tipo_e,$status_e,$area);
         if ($resultadd_e == true) {
             //$result = AllEmpleados();

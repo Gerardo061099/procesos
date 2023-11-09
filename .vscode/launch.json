@@ -9,7 +9,7 @@
             "type": "php",
             "request": "launch",
             "port": 9003,
-            "program": "C:/MAMP/htdocs/procesos/php/informationGraphics.php"
+            "program": "C:/MAMP/htdocs/procesos/php/empleadosInfo.php"
         },
         {
             "name": "Launch currently open script",

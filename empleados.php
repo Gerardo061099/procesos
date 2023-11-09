@@ -19,7 +19,6 @@ if (isset($_SESSION['id_user'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +29,7 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/styles2.css">
     <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.13.2/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
 </head>
 
@@ -58,6 +57,7 @@ if (isset($_SESSION['id_user'])) {
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-white" aria-labelledby="dropdownMenuButton1">
                     <li><a href="perfil.php" class=" dropdown-item"><i class="fa-solid fa-user-tie"></i> Perfil</a></li>
                     <li><a href="#" class="dropdown-item"><i class="fa-solid fa-gear"></i> Configuracion</a></li>
+                    <li><hr class="dropdown-divider"></li>
                     <li><a href="php/close_session.php" class=" dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Cerra sesion</a></li>
                 </ul>
             </div>
@@ -192,7 +192,7 @@ if (isset($_SESSION['id_user'])) {
                                 <tbody>
                                 </tbody>
                                 <tfoot>
-                                <tr>
+                                    <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Operador</th>
                                         <th scope="col">Apellidos</th>

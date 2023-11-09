@@ -20,7 +20,6 @@ if (isset($_SESSION['id_user'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,7 +33,6 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.13.2/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
 </head>
-
 <body class="c_principal">
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid" id="container-op-titulo">
@@ -59,6 +57,7 @@ if (isset($_SESSION['id_user'])) {
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-white" aria-labelledby="dropdownMenuButton1">
                     <li><a href="perfil.php" class=" dropdown-item"><i class="fa-solid fa-user-tie"></i> Perfil</a></li>
                     <li><a href="#" class="dropdown-item"><i class="fa-solid fa-gear"></i> Configuracion</a></li>
+                    <li><hr class="dropdown-divider"></li>
                     <li><a href="php/close_session.php" class=" dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Cerra sesion</a></li>
                 </ul>
             </div>

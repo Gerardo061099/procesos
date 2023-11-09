@@ -9,7 +9,7 @@ function Update_infousers(data) {
     $('#usuariomodal').val(d[3]);//name_user
     $('#num_empleadomodal').val(d[4]);//numero_empleado
     $('#rolemodal').val(d[5]);//rolename
-    if(d[6]==1){
+    if(d[6]==1) { 
         $('#estadomodal').val('Activo');
     }else {
     $('#estadomodal').val('Inactivo');

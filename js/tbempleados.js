@@ -7,7 +7,6 @@ import { setMessageAlert } from './message.js'
  * Code by: Gerardo Jimenez Castillo
  */
 
-
 $(document).ready(function () {
     let tablaempleados
     let opcion 

@@ -21,9 +21,11 @@ $pwd = $_POST[ 'pwd' ];
     } else {
         header('location: index.php');
     }
+
 if ( $_SESSION[ 'sesion' ]<1 || $_SESSION[ 'sesion' ]>1 ) {
     header( 'Location: index.php' );
 }
+
 if ( $_SESSION[ 'sesion' ] == 1 ) {
 $_SESSION[ 'id_user' ] = $consulta[ 'id' ];
 $_SESSION[ 'role' ] = $consulta[ 'rolename' ];

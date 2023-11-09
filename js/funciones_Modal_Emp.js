@@ -9,15 +9,15 @@ export function deleteOptions(a) {
     $(a).empty();
 }
 export async function getOptionsTipoEmp() {
-   await $.get('php/dataTipoE.php',function (data, textStatus, jqXHR) {
+    await $.get('php/dataTipoE.php',function (data, textStatus, jqXHR) {
             let datos = data    
-             addOptions('select_empleados',datos)    
+            addOptions('select_empleados',datos)    
             },'json'
         )
 }
 export async function getOptionsArea() {
         //here our function should be implemented 
-       await $.get('php/dataArea.php',function (data, textStatus, jqXHR) {
+        await $.get('php/dataArea.php',function (data, textStatus, jqXHR) {
             let datos = data    
             addOptions('select_area',datos)    
             },'json'
