@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+
+echo '<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,4 +11,5 @@
 <body>
     <h1>Error 505</h1>
 </body>
-</html>
+</html>';
+?>

@@ -14,13 +14,7 @@ ol {
 }
 
 @media screen and (max-width:1830px) {
-    .container-p {
-        flex-direction: column;
-    }
 
-    .container-p-b {
-        width: 100%;
-    }
 
     .container-rem {
         padding: 10px 0;

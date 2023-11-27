@@ -88,16 +88,6 @@
     color: white;
 }
 
-#container-op-titulo {
-    margin: 0;
-    width: 45%;
-    padding-left: 40px;
-}
-
-.titulo-principal {
-    color: white;
-}
-
 .navbar .op-usuario {
     justify-content: end;
 }
@@ -184,10 +174,6 @@
     color: white;
 }
 
-.footer {
-    padding: 20px 20px;
-    border-top: 5px #ffca3a solid;
-}
 
 .container-perfil {
     display: flex;
@@ -304,7 +290,8 @@
     padding: 0 5px;
 }
 
-.container-prod,.container-empleados{
+.container-prod,
+.container-empleados{
     width: 100%;
     padding: 10px 15px;
     display: flex;
@@ -378,14 +365,6 @@
 .icon-info, .fa-bars-staggered {
     width: 30px;
     height: 30px;
-}
-
-.container-costos {
-    margin: 10px;
-    width: 98.5%;
-    background: #FDFEFE;
-    border: .5px #000000 solid;
-    border-radius: 5px;
 }
 
 .container-p-a {

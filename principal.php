@@ -25,60 +25,78 @@ if (isset($_SESSION['id_user'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="shortcut icon" href="img/data-analytics.png">
+    <link rel="icon" href="img/analytics-laptop-svgrepo-com.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/styles2.css">
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.13.2/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles2.css">
+    <link rel="stylesheet" href="css/stylesBS.css">
 </head>
+
 <body class="c_principal">
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid" id="container-op-titulo">
-            <h3 class="titulo-principal">ALUXSA S.A de C.V</h3>
+    <nav class="navbar sticky-top navbar-expand navbar-dark bg-dark">
+        <div class="container-fluid">
+            <h3 class="text-white fs-5 ">ALUXSA S.A de C.V</h3>
         </div>
-        <div class="op-usuario">
+        <div class="px-3">
             <div class="dropdown" id="op-user">
                 <div>
                     <img src="img/man.png" alt="" class="user-profile">
                 </div>
-                <p class="nombreUsuario"><span class="text-white" id="usuario">
+                <p class="nombreUsuario d-none d-sm-block">
+                    <span class="text-white" id="usuario">
                         <?php if (!empty($user)) : ?>
-                            <?= $user['user'];
-                            ?>
+                            <?= $user['user'];?>
                         <?php else : ?>
-                            Usuario no obtenido
+                            Usuario no obtenido     
                         <?php endif; ?>
-                    </span></p>
+                    </span>
+                </p>
                 <span class="btn btn-dark btn-sm" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </span>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-white" aria-labelledby="dropdownMenuButton1">
-                    <li><a href="perfil.php" class=" dropdown-item"><i class="fa-solid fa-user-tie"></i> Perfil</a></li>
                     <li><a href="#" class="dropdown-item"><i class="fa-solid fa-gear"></i> Configuracion</a></li>
                     <li><hr class="dropdown-divider"></li>
+                    <li><a href="perfil.php" class="dropdown-item">
+                            <p class="profile-sm-user">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <?php if (!empty($user)) : ?>
+                                    <?= $user['user'];?>
+                                <?php else : ?>
+                                    Usuario no obtenido  
+                                <?php endif; ?>
+                            </p>
+                            <p class="profile-md-user">
+                                <i class="fa-solid fa-user-tie"></i>
+                                Perfil
+                            </p>
+                        </a>
+                    </li>
                     <li><a href="php/close_session.php" class=" dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Cerra sesion</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container-principal">
+    <header class="container-principal">
         <div class="container-btn-menu">
-            <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            <a class="btn btn-sm" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                 <i class="fa-solid fa-bars"></i>
             </a>
         </div>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-            <div class="offcanvas-header">
+        <aside class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <header class="offcanvas-header">
                 <div class="container-perfil">
                     <img src="img/man.png" alt="" class="img-perfil">
                     <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
                 </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="divicion"></div>
-            <div class="offcanvas-body">
+            </header>
+            <hr class="bg-light">
+            <!-- <div class="divicion"></div> -->
+            <section class="offcanvas-body">
                 <ul class="menu-lista">
                     <li class="options option-active"><a href="#" class="links"><i class="fa-solid fa-house"></i> Inicio</a></li>
                     <li class="options"><a href="usuarios_sistema.php" class="links"><i class="fa-solid fa-users-gear"></i> Administrar usuarios</a></li>
@@ -99,29 +117,30 @@ if (isset($_SESSION['id_user'])) {
                         </ul>
                     </div>
                 </ul>
-            </div>
-            <footer class="footer">
+                                </section>
+            <hr class="bg-light">
+            <footer class="footer p-3">
                 <div class="container-perfil">
-                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V &reg;</h5>
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V</h5>
                 </div>
             </footer>
-        </div>
+        </aside>
         <div class="text-dash">
             <h4 id="text">Dashboard</h4>
         </div>
-    </div>
-    <main class="container-p">
-        <section class="container-p-b">
-            <div class="card">
-                <div class="card-header bg-dark text-white header-container-p">
+    </header>
+    <main class="container-fluid p-3 d-xl-block d-xxl-flex">
+        <section class="row p-2 w-xxl-75">
+            <div class="card border-0 col-12 col-sm-12 col-md-12 col-xl-12 col-xxl-12 p-0">
+                <header class="card-header bg-dark text-white header-container-p">
                     <h4 class="title-card">Producción Actual</h4>
                     <div class="plus btn-sm">
                         <button class="btn btn-dark btn-sm" id="boton-c" onclick="changeicon('tbProd');" type="button" data-bs-toggle="collapse" data-bs-target="#tablaProduccion" aria-expanded="false" aria-controls="collapseExample">
                             <i class="fa-solid fa-minus" id="tbProd"></i>
                         </button>
                     </div>
-                </div>
-                <div class="collapse show" id="tablaProduccion">
+                </header>
+                <section class="collapse show" id="tablaProduccion">
                     <div class="card-body cuerpo-card">
                         <div class="table-responsive">
                             <table id="tableProduccion" class="table table-striped tabla-prod-today display responsive nowrap">
@@ -150,58 +169,15 @@ if (isset($_SESSION['id_user'])) {
                             </table>
                         </div>
                     </div>
-                </div>
-                <div class="modal fade" id="editProd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-fullscreen-sm-down">
-                        <div class="modal-content">
-                            <div class="modal-header bg-dark" id="header-modal-add-user">
-                                <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-pencil"></i> Editar registro</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="row g-3" id="frm-editProd">
-                                    <div id="alerta"></div>
-                                    <div class="col-md-4">
-                                        <label for="id">Id</label>
-                                        <input type="text" class="form-control" id="id" disabled>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <label for="nombre">Nombre:</label>
-                                        <input type="text" class="form-control" id="nombre">
-                                    </div>
-                                    <div class="col-md-7">
-                                        <label for="apellidos">Apellidos:</label>
-                                        <input type="text" class="form-control" id="apellidos">
-                                    </div>
-                                    <div class="col-md-5" id="show-item1">
-                                        <label for="pieza">Pieza:</label>
-                                        <input type="text" class="form-control" id="pieza">
-                                    </div>
-                                    <div class="col-md-6" id="show-item2">
-                                        <label for="aceptadas">Aceptadas:</label>
-                                        <input type="numbre" class="form-control" id="aceptadas" min="1">
-                                    </div>
-                                    <div class="col-md-6" id="show-item2">
-                                        <label for="rechazadas">Rechazadas:</label>
-                                        <input type="numbre" class="form-control" id="rechazadas" min="1">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-success btn-sm" id="show-item3">Registrar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </section>
             </div>
         </section>
-        <aside class="container-rem">
-            <div class="container2">
+        <aside class="row d-xxl-block gy-3 w-xxl-25 p-2">
+            <div class="col-12 col-sm-6 col-md-6 col-xl-4 col-xxl-12">
                 <div class="card bg-dark">
                     <div class="card-header cabecera text-white">
                         <h5 class="title-card"><i class="fa-solid fa-chart-pie"></i> Remanente utilizado</h5>
-                        <div class="plus btn-sm">
+                        <div class="plus">
                             <button class="btn btn-dark btn-sm" id="boton-b" onclick="changeicon('icon1');" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                 <i class="fa-solid fa-minus" id="icon1"></i>
                             </button>
@@ -216,11 +192,11 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </div>
             </div>
-            <div class="container-p-a">
+            <div class="col-12 col-sm-6 col-md-6 col-xl-4 col-xxl-12">
                 <div class="card bg-dark text-white">
-                    <div class="card-header header-container-p">
+                    <div class="card-header">
                         <h5 class="title-card"><i class="fa-solid fa-list-ol"></i> Resumen</h5>
-                        <div class="plus btn-sm">
+                        <div class="plus ">
                             <button class="btn btn-dark btn-sm" id="boton-c" onclick="changeicon('icon-resumen');" type="button" data-bs-toggle="collapse" data-bs-target="#resumen" aria-expanded="false" aria-controls="collapseExample">
                                 <i class="fa-solid fa-minus" id="icon-resumen"></i>
                             </button>
@@ -255,11 +231,11 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </div>
             </div>
-            <div class="container2-consumos">
+            <div class="col-12 col-sm-6 col-md-6 col-xl-4 col-xxl-12">
                 <div class="card bg-dark tag-graphis">
                     <div class="card-header text-white">
                         <h5 class="title-card"><i class="fa-solid fa-ranking-star"></i> Ranking de empleados</h5>
-                        <div class="plus btn-sm">
+                        <div class="plus">
                             <button class="btn btn-dark btn-sm" id="boton-c" onclick="changeicon('icon2');" type="button" data-bs-toggle="collapse" data-bs-target="#tarjeta2" aria-expanded="false" aria-controls="collapseExample">
                                 <i class="fa-solid fa-minus" id="icon2"></i>
                             </button>
@@ -276,11 +252,13 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </aside>
     </main>
-
-
-    <footer></footer>
-    <!-- Card dinamico -->
-    
+    <footer class="bg-dark p-3 sticky-bottom">
+        <div class="container" >
+            <nav class="d-flex justify-content-center ">
+                <small class="text-white" >&#174;Todos los derechoz reservados &#169;2024 Aluxsa S.A de C.V </small>
+            </nav>
+        </div>
+    </footer>
 
     <script src="https://kit.fontawesome.com/282ec8cabc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -293,5 +271,4 @@ if (isset($_SESSION['id_user'])) {
     <script src="js/script_base.js"></script>
     <script src="js/graficas.js"></script>
 </body>
-
 </html>

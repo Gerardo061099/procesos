@@ -11,7 +11,7 @@
 </head>
 <body class="cuerpo">
     <div class="barra"></div>
-    <div class="container-login">
+    <div class="container-login w-100 px-3">
         <div class="log-in">
             <div class="login-head"><h1>Sign in</h1></div>
             <div class="linea"></div>
@@ -20,11 +20,11 @@
                 <div class="container-form">
                     <div class="mb-2">
                         <label for="user" class="form-label">Usuario: </label>
-                        <input type="text" class="form-control" id="user" placeholder="anyone56@mail.com" name="user">
+                        <input type="text" class="form-control form-control-sm" id="user" placeholder="anyone56@mail.com" name="user">
                     </div>
                     <div class="mb-2">
                         <label for="pass" class="form-label">Contraseña: </label>
-                        <input type="password" class="form-control" id="pass" placeholder="*************" name="pwd">
+                        <input type="password" class="form-control form-control-sm" id="pass" placeholder="*************" name="pwd">
                     </div>
                     <div class="form-check">
                         <label for="Checkpass" class="form-label">Show password</label>

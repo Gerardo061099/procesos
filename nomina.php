@@ -26,7 +26,7 @@ if (isset($_SESSION['id_user'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nominas</title>
-    <link rel="shortcut icon" href="img/data-analytics.png">
+    <link rel="icon" href="img/analytics-laptop-svgrepo-com.svg">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles2.css">
@@ -35,16 +35,16 @@ if (isset($_SESSION['id_user'])) {
 </head>
 
 <body class="c_principal">
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid" id="container-op-titulo">
-            <h3 class="titulo-principal">ALUXSA S.A de C.V</h3>
+    <nav class="navbar sticky-top navbar-expand navbar-dark bg-dark">
+        <div class="container-fluid">
+            <h3 class="text-white fs-5">ALUXSA S.A de C.V</h3>
         </div>
-        <div class="op-usuario">
+        <div class="px-3">
             <div class="dropdown" id="op-user">
                 <div>
                     <img src="img/man.png" alt="" class="user-profile">
                 </div>
-                <p class="nombreUsuario">
+                <p class="nombreUsuario d-none d-sm-block">
                     <span class="text-white" id="usuario">
                         <?php if (!empty($user)) : ?>
                             <?= $user['user'];
@@ -117,78 +117,86 @@ if (isset($_SESSION['id_user'])) {
             </nav>
         </div>
     </div>
-    <div class="container-costos card">
-        <div class="card-header">
-            <h5 class="titulo-collaps">Sueldos y Salarios</h5>
-            <div class="button-remanente-retorno">
-                <div class="row g-3 align-items-center contenedor-funciones-nomina">
-                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#Upfiles"><i class="fa-solid fa-file-circle-plus"></i></button>
-                </div>
-                <div>
-                    <button type="button" class="btn btn-light btn-sm" onclick="changeicon('pluss');" type="button" data-bs-toggle="collapse" data-bs-target="#tabla-nomina" aria-expanded="false" aria-controls="collapseExample">
-                        <i class="fa-solid fa-minus" id="pluss"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="Upfiles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered ">
-            <div class="modal-content bg-dark">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sube tu archivo Excel</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form id="frmNewConsumos">
-                    <div class="modal-body">
-                        <div class="row g-3 align-items-center">
-                            <div class="col-auto">
-                                <Label for="filexcel" class="col-form-label text-white">Load File:</Label>
-                            </div>
-                            <div class="col-auto">
-                                <input type="file" id="filexcel" class="form-control form-control-sm bg-dark text-white" accept="xlsx">
-                            </div>
-                        </div>
-                        <div class="row g-3 align-items-center">
-                            <div class="col-auto">
-                                <label for="cantidad" class="col-form-label text-white">Periodo:</label>
-                            </div>
-                            <div class="col-auto">
-                                <input type="date" id="fecha1" class="form-control form-control-sm bg-dark text-white">
-                            </div>
-                            <div class="col-auto text-white">al</div>
-                            <div class="col-auto">
-                                <input type="date" id="fecha2" class="form-control form-control-sm bg-dark text-white">
-                            </div>
-                        </div>
+    <main class="container p-3">
+        <section class="card">
+            <div class="card-header">
+                <h5 class="titulo-collaps">Sueldos y Salarios</h5>
+                <div class="button-remanente-retorno gx-3">
+                    <div class="row  align-items-center contenedor-funciones-nomina">
+                        <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#Upfiles"><i class="fa-solid fa-file-circle-plus"></i></button>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary btn-sm">Subir archivo</button>
+                    <div>
+                        <button type="button" class="btn btn-light btn-sm" onclick="changeicon('pluss');" type="button" data-bs-toggle="collapse" data-bs-target="#tabla-nomina" aria-expanded="false" aria-controls="collapseExample">
+                            <i class="fa-solid fa-minus" id="pluss"></i>
+                        </button>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-        <div class="collapse show" id="tabla-nomina">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="tb-consumos" class="table table-striped tabla-prod-today">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Empleado</th>
-                                <th scope="col">Salario</th>
-                                <th scope="col">Periodo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
                 </div>
             </div>
+            <div class="modal fade" id="Upfiles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content bg-dark">
+                        <header class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sube tu archivo Excel</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </header>
+                        <form id="frmNewConsumos">
+                            <div class="modal-body">
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-auto">
+                                        <Label for="filexcel" class="col-form-label text-white">Load File:</Label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input type="file" id="filexcel" class="form-control form-control-sm bg-dark text-white" accept="xlsx">
+                                    </div>
+                                </div>
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-auto">
+                                        <label for="cantidad" class="col-form-label text-white">Periodo:</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <input type="date" id="fecha1" class="form-control form-control-sm bg-dark text-white">
+                                    </div>
+                                    <div class="col-auto text-white">al</div>
+                                    <div class="col-auto">
+                                        <input type="date" id="fecha2" class="form-control form-control-sm bg-dark text-white">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Subir archivo</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="collapse show" id="tabla-nomina">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tb-consumos" class="table table-striped tabla-prod-today">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Empleado</th>
+                                    <th scope="col">Salario</th>
+                                    <th scope="col">Periodo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-dark p-3 sticky-bottom mt-5">
+        <div class="container" >
+            <nav class="d-flex justify-content-center ">
+                <small class="text-white" >&#174;Todos los derechoz reservados &#169;2024 Aluxsa S.A de C.V </small>
+            </nav>
         </div>
-    </div>
-    
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/282ec8cabc.js" crossorigin="anonymous"></script>

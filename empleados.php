@@ -24,7 +24,7 @@ if (isset($_SESSION['id_user'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion de la produccion</title>
-    <link rel="shortcut icon" href="img/data-analytics.png">
+    <link rel="icon" href="img/analytics-laptop-svgrepo-com.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/styles2.css">
@@ -34,16 +34,17 @@ if (isset($_SESSION['id_user'])) {
 </head>
 
 <body class="c_principal">
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid" id="container-op-titulo">
-            <h3 class="titulo-principal">ALUXSA S.A de C.V</h3>
+    <nav class="navbar sticky-top navbar-expand navbar-dark bg-dark">
+        <div class="container-fluid">
+            <h3 class="text-white fs-5">ALUXSA S.A de C.V</h3>
         </div>
-        <div class="op-usuario">
+        <div class="px-3">
             <div class="dropdown" id="op-user">
                 <div>
                     <img src="img/man.png" alt="" class="user-profile">
                 </div>
-                <p class="nombreUsuario"><span class="text-white" id="usuario">
+                <p class="nombreUsuario d-none d-sm-block">
+                    <span class="text-white" id="usuario">
                         <?php if (!empty($user)) : ?>
                             <?= $user['user'];
                             ?>
@@ -115,9 +116,9 @@ if (isset($_SESSION['id_user'])) {
             </footer>
         </div>
     </div>
-    <main class="container-empleados d-flex justify-content-center">
-        <section class="container-table-empleados">
-            <div class="card bg-dark bg-gradient text-white container-card">
+    <main class="container-empleados d-flex justify-content-center w-100">
+        <section class="container-table-empleados w-100">
+            <div class="card bg-dark bg-gradient text-white container-card w-100">
                 <div class="card-header">
                     <h5 class="titulo-collaps">Lista de empleados</h5>
                     <div class="plus d-grid gap-2 d-md-flex justify-content-md-end">
@@ -207,10 +208,16 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  
         </section>
     </main>
-    
+    <footer class="bg-dark p-3 sticky-bottom mt-5">
+        <div class="container" >
+            <nav class="d-flex justify-content-center ">
+                <small class="text-white" >&#174;Todos los derechoz reservados &#169;2024 Aluxsa S.A de C.V </small>
+            </nav>
+        </div>
+    </footer>
     <script src="https://kit.fontawesome.com/282ec8cabc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -26,7 +26,7 @@ if (isset($_SESSION['id_user'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="shortcut icon" href="img/data-analytics.png">
+    <link rel="icon" href="img/analytics-laptop-svgrepo-com.svg">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles2.css">
@@ -35,16 +35,16 @@ if (isset($_SESSION['id_user'])) {
 </head>
 
 <body class="c_principal">
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid" id="container-op-titulo">
-            <h3 class="titulo-principal">ALUXSA S.A de C.V</h3>
+    <nav class="navbar sticky-top navbar-expand navbar-dark bg-dark">
+        <div class="container-fluid">
+            <h3 class="text-white fs-5">ALUXSA S.A de C.V</h3>
         </div>
-        <div class="op-usuario">
+        <div class="px-3">
             <div class="dropdown" id="op-user">
                 <div>
                     <img src="img/man.png" alt="" class="user-profile">
                 </div>
-                <p class="nombreUsuario">
+                <p class="nombreUsuario d-none d-sm-block">
                     <span class="text-white" id="usuario">
                         <?php if (!empty($user)) : ?>
                             <?= $user['user'];
@@ -118,69 +118,77 @@ if (isset($_SESSION['id_user'])) {
             </nav>
         </div>
     </div>
-    <div class="container-costos card">
-        <div class="card-header">
-            <h5 class="titulo-collaps">Consumos de Fundicion 1</h5>
-            <div class="button-remanente-retorno">
-                <button type="button" class="btn btn-primary btn-sm" id="newConsumo">
-                    <i class="fa-solid fa-square-plus"></i>
-                </button>
-                <button type="button" class="btn btn-light btn-sm" onclick="changeicon('pluss');" type="button" data-bs-toggle="collapse" data-bs-target="#consumos" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fa-solid fa-minus" id="pluss"></i>
-                </button>
+    <main class="px-3">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="titulo-collaps">Consumos de Fundicion 1</h5>
+                <div class="button-remanente-retorno">
+                    <button type="button" class="btn btn-primary btn-sm" id="newConsumo">
+                        <i class="fa-solid fa-square-plus"></i>
+                    </button>
+                    <button type="button" class="btn btn-light btn-sm" onclick="changeicon('pluss');" type="button" data-bs-toggle="collapse" data-bs-target="#consumos" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fa-solid fa-minus" id="pluss"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="collapse show" id="consumos">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="tb-consumos" class="table table-striped tabla-prod-today">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Concepto</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+            <div class="collapse show" id="consumos">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tb-consumos" class="table table-striped tabla-prod-today">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Concepto</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="consumosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content bg-dark">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Consumos</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal fade" id="consumosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Consumos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form id="frmNewConsumos">
+                        <div class="modal-body row g-3 align-items-center">
+                            <div class="col-auto">
+                                <label for="concepto" class="col-form-label text-white">Concepto:</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="concepto" class="form-control form-control-sm bg-dark text-white">
+                            </div>
+                            <div class="col-auto">
+                                <label for="cantidad" class="col-form-label text-white">Cantidad:</label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="cantidad" class="form-control form-control-sm bg-dark text-white">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Registrar</button>
+                        </div>
+                    </form>
                 </div>
-                <form id="frmNewConsumos">
-                    <div class="modal-body row g-3 align-items-center">
-                        <div class="col-auto">
-                            <label for="concepto" class="col-form-label text-white">Concepto:</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" id="concepto" class="form-control form-control-sm bg-dark text-white">
-                        </div>
-                        <div class="col-auto">
-                            <label for="cantidad" class="col-form-label text-white">Cantidad:</label>
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" id="cantidad" class="form-control form-control-sm bg-dark text-white">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary btn-sm">Registrar</button>
-                    </div>
-                </form>
             </div>
         </div>
-    </div>
-
+    </main>
+    <footer class="bg-dark p-3 sticky-bottom mt-5">
+        <div class="container" >
+            <nav class="d-flex justify-content-center ">
+                <small class="text-white" >&#174;Todos los derechoz reservados &#169;2024 Aluxsa S.A de C.V </small>
+            </nav>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/282ec8cabc.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
