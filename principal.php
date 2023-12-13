@@ -38,7 +38,7 @@ if (isset($_SESSION['id_user'])) {
 <body class="c_principal">
     <nav class="navbar sticky-top navbar-expand navbar-dark bg-dark">
         <div class="container-fluid">
-            <h3 class="text-white fs-5 ">ALUXSA S.A de C.V</h3>
+            <h3 class="text-white fs-5">ALUXSA S.A de C.V</h3>
         </div>
         <div class="px-3">
             <div class="dropdown" id="op-user">
@@ -81,11 +81,6 @@ if (isset($_SESSION['id_user'])) {
         </div>
     </nav>
     <header class="container-principal">
-        <div class="container-btn-menu">
-            <a class="btn btn-sm" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                <i class="fa-solid fa-bars"></i>
-            </a>
-        </div>
         <aside class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <header class="offcanvas-header">
                 <div class="container-perfil">
@@ -94,7 +89,7 @@ if (isset($_SESSION['id_user'])) {
                 </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </header>
-            <hr class="bg-light">
+            <hr class="bg-light my-2">
             <!-- <div class="divicion"></div> -->
             <section class="offcanvas-body">
                 <ul class="menu-lista">
@@ -117,14 +112,19 @@ if (isset($_SESSION['id_user'])) {
                         </ul>
                     </div>
                 </ul>
-                                </section>
-            <hr class="bg-light">
+            </section>
+            <hr class="bg-light my-2">
             <footer class="footer p-3">
                 <div class="container-perfil">
                     <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V</h5>
                 </div>
             </footer>
         </aside>
+        <div class="container-btn-menu">
+            <a class="btn btn-sm" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+        </div>
         <div class="text-dash">
             <h4 id="text">Dashboard</h4>
         </div>

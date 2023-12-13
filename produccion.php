@@ -55,200 +55,175 @@ if (isset($_SESSION['id_user'])) {
                     <i class="fa-solid fa-ellipsis-vertical fa-bounce"></i>
                 </span>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-white" aria-labelledby="dropdownMenuButton1">
-                    <li><a href="perfil.php" class=" dropdown-item"><i class="fa-solid fa-user-tie"></i> Perfil</a></li>
                     <li><a href="#" class="dropdown-item"><i class="fa-solid fa-gear"></i> Configuracion</a></li>
                     <li><hr class="dropdown-divider"></li>
+                    <li><a href="perfil.php" class=" dropdown-item"><i class="fa-solid fa-user-tie"></i> Perfil</a></li>
                     <li><a href="php/close_session.php" class=" dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Cerra sesion</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <header class="container-principal">
-            <div class="container-btn-menu">
-                <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                    <i class="fa-solid fa-bars fa-beat"></i>
-                </a>
-            </div>
-            <div class="bread-crum">
-                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Gestion de producción</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Producción</li>
-                    </ol>
-                </nav>
-            </div>
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                <div class="offcanvas-header">
-                    <div class="container-perfil">
-                        <img src="img/man.png" alt="" class="img-perfil">
-                        <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
-                    </div>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <div class="container-perfil">
+                    <img src="img/man.png" alt="" class="img-perfil">
+                    <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
                 </div>
-                <div class="divicion"></div>
-                <div class="offcanvas-body">
-                    <ul class="menu-lista">
-                        <li class="options"><a href="principal.php" class="links"><i class="fa-solid fa-house"></i> Inicio</a></li>
-                        <li class="options"><a href="usuarios_sistema.php" class="links"><i class="fa-solid fa-users-gear"></i> Administrar usuarios</a></li>
-                        <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle');"><i class="fa-solid fa-list-check"></i> Gestion de produccion <i class="fa-solid fa-angle-up" id="icon-angle"></i></a></li>
-                        <div class="collapse show sub-menu" id="sub-menu">
-                            <ul class="menu-lista">
-                                <li class="options option-active-sub-me"><a href="#" class="links"><i class="fa-solid fa-industry"></i> Producción</a></li>
-                                <li class="options"><a href="consumos.php" class="links"><i class="fa-solid fa-cash-register"></i> Consumos</a></li>
-                                <li class="options"><a href="#" class="links"><i class="fa-solid fa-dollar-sign"></i> Costos de producción</a></li>
-                            </ul>
-                        </div>
-                        <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i> Resultados de producción</a></li>
-                        <li class="options"><a href="nomina.php" class="links"><i class="fa-solid fa-file-invoice-dollar"></i> Nominas</a></li>
-                        <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu2" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle2');"><i class="fa-solid fa-people-group"></i> Empleados <i class="fa-solid fa-angle-down" id="icon-angle2"></i></a></li>
-                        <div class="collapse sub-menu" id="sub-menu2">
-                            <ul class="menu-lista">
-                                <li class="options"><a href="empleados.php" class="links"><i class="fa-solid fa-chart-column"></i> Productividad</a></li>
-                            </ul>
-                        </div>
-                    </ul>
-                </div>
-                <footer class="footer">
-                    <div class="container-perfil">
-                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V &reg;</h5>
-                    </div>
-                </footer>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-    </header>
-    <!-- <aside class="container-prod">
-            <div class="card " style="padding: 20px 20px;">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#fundicion1" type="button" role="tab" aria-controls="home" aria-selected="true">Fundicion 1</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#fundicion2" type="button" role="tab" aria-controls="profile" aria-selected="false">Fundicion 2</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#empaque" type="button" role="tab" aria-controls="contact" aria-selected="false">Empaque</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#lavado" type="button" role="tab" aria-controls="contact" aria-selected="false">Lavado</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#lija" type="button" role="tab" aria-controls="contact" aria-selected="false">Lija</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#pintura" type="button" role="tab" aria-controls="contact" aria-selected="false">Pintura</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#tornos" type="button" role="tab" aria-controls="contact" aria-selected="false">Tornos</button>
-                    </li>
+            <hr class="bg-light my-2" >
+            <div class="offcanvas-body">
+                <ul class="menu-lista">
+                    <li class="options"><a href="principal.php" class="links"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                    <li class="options"><a href="usuarios_sistema.php" class="links"><i class="fa-solid fa-users-gear"></i> Administrar usuarios</a></li>
+                    <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle');"><i class="fa-solid fa-list-check"></i> Gestion de produccion <i class="fa-solid fa-angle-up" id="icon-angle"></i></a></li>
+                    <div class="collapse show sub-menu" id="sub-menu">
+                        <ul class="menu-lista">
+                            <li class="options option-active-sub-me"><a href="#" class="links"><i class="fa-solid fa-industry"></i> Producción</a></li>
+                            <li class="options"><a href="consumos.php" class="links"><i class="fa-solid fa-cash-register"></i> Consumos</a></li>
+                            <li class="options"><a href="#" class="links"><i class="fa-solid fa-dollar-sign"></i> Costos de producción</a></li>
+                        </ul>
+                    </div>
+                    <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i> Resultados de producción</a></li>
+                    <li class="options"><a href="nomina.php" class="links"><i class="fa-solid fa-file-invoice-dollar"></i> Nominas</a></li>
+                    <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu2" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle2');"><i class="fa-solid fa-people-group"></i> Empleados <i class="fa-solid fa-angle-down" id="icon-angle2"></i></a></li>
+                    <div class="collapse sub-menu" id="sub-menu2">
+                        <ul class="menu-lista">
+                            <li class="options"><a href="empleados.php" class="links"><i class="fa-solid fa-chart-column"></i> Productividad</a></li>
+                        </ul>
+                    </div>
                 </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="fundicion1" role="tabpanel" aria-labelledby="home-tab">Inicio Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur facilis iste eos tempora quas recusandae, iusto eius vel magni animi eveniet est voluptas neque maxime et ratione beatae nemo perspiciatis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero illo excepturi, consequuntur consectetur, facere accusamus, hic ipsum nisi numquam nulla itaque? Praesentium quisquam molestiae rem hic vitae, ipsa fugit dolorem! </div>
-                    <div class="tab-pane fade" id="fundicion2" role="tabpanel" aria-labelledby="profile-tab">Perfil Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur iure ea molestiae tempore dolor, veniam, maxime rerum laborum deserunt at facilis voluptatibus eligendi dolorum ullam tempora, ad nostrum numquam architecto.</div>
-                    <div class="tab-pane fade" id="empaque" role="tabpanel" aria-labelledby="contact-tab">Contacto Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti porro, provident corrupti dolores, eius itaque nam odit ratione deserunt iusto fugit repellendus, nisi quam voluptatem veniam? Necessitatibus porro repellat quas.</div>
-                    <div class="tab-pane fade" id="lavado" role="tabpanel" aria-labelledby="contact-tab">Contacto Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti porro, provident corrupti dolores, eius itaque nam odit ratione deserunt iusto fugit repellendus, nisi quam voluptatem veniam? Necessitatibus porro repellat quas.</div>
-                    <div class="tab-pane fade" id="lija" role="tabpanel" aria-labelledby="contact-tab">Contacto Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti porro, provident corrupti dolores, eius itaque nam odit ratione deserunt iusto fugit repellendus, nisi quam voluptatem veniam? Necessitatibus porro repellat quas.</div>
-                    <div class="tab-pane fade" id="pintura" role="tabpanel" aria-labelledby="contact-tab">Contacto Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti porro, provident corrupti dolores, eius itaque nam odit ratione deserunt iusto fugit repellendus, nisi quam voluptatem veniam? Necessitatibus porro repellat quas.</div>
-                    <div class="tab-pane fade" id="tornos" role="tabpanel" aria-labelledby="contact-tab">Contacto Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti porro, provident corrupti dolores, eius itaque nam odit ratione deserunt iusto fugit repellendus, nisi quam voluptatem veniam? Necessitatibus porro repellat quas.</div>
-                </div>
             </div>
-    </aside> -->
-    <div class="container-init-tags flex-wrap">
-            <div class=" bg-dark text-white container-tags Lingote_Ret" draggable="true">
-                <div class="img-remanente">
-                    <img src="img/silver.png" alt="">
+            <hr class="bg-light my-2">
+            <footer class="footer p-3">
+                <div class="container-perfil">
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V &reg;</h5>
                 </div>
-                <div class="line-separator"></div>
-                <div class="body-tags">
-                    <h2 class="lingoteR"><strong></strong></h2>
-                    <label for="lingote">Lingote Ret.</label>
-                </div>
-            </div>
-            <div class=" bg-success text-white container-tags Goteo" draggable="true">
-                <div class="img-remanente">
-                    <img src="img/gotas.png" alt="">
-                </div>
-                <div class="line-separator"></div>
-                <div class="body-tags">
-                    <h2 class="GoteoR"><strong></strong></h2>
-                    <label for="goteo">Goteo</label>
-                </div>
-            </div>
-            <div class=" bg-primary text-white container-tags Pza_rechazada" draggable="true">
-                <div class="img-remanente">
-                    <img src="img/prohibition.png" alt="">
-                </div>
-                <div class="line-separator"></div>
-                <div class="body-tags">
-                    <h2 class="pzaRechazada"><strong></strong></h2>
-                    <label for="rechazo">Pza rechazada</label>
-                </div>
-            </div>
-            <div class=" bg-warning text-white container-tags Coladas" draggable="true">
-                <div class="img-remanente">
-                    <img src="img/placa.png" alt="">
-                </div>
-                <div class="line-separator"></div>
-                <div class="body-tags">
-                    <h2 class="ColadaC"><strong></strong></h2>
-                    <label for="rechazo">Coladas</label>
-                </div>
-            </div>
-    </div>
-    <main class="container">
-        <section class="d-flex w-100">
-            <div class="card bg-dark text-white contenedor-tb-produccion w-75">
-                <div class="card-header">
-                    <h5 class="titulo-collaps">Producción de Fundición 1</h5>
-                    <div class="plus d-grid gap-2 d-md-flex justify-content-md-end">
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Registro de piezas elaboradas">
-                            <button type="button" class="btn btn-success btn-sm text-white" id="nuevoRegistro">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                        </span>
-                        <button class="btn btn-dark btn-sm" id="boton-b" onclick="changeicon('plus');" type="button" data-bs-toggle="collapse" data-bs-target="#productiones" aria-expanded="false" aria-controls="productiones">
-                            <i class="fa-solid fa-minus" id="plus"></i>
-                        </button>
+            </footer>
+        </div>
+        <div class="container-btn-menu">
+            <a class="btn btn-sm" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <i class="fa-solid fa-bars fa-beat"></i>
+            </a>
+        </div>
+        <div class="bread-crum">
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Gestion de producción</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Producción</li>
+                </ol>
+            </nav>
+        </div>
+    </header>
+    <main class="container p-2">
+        <section class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 g-sm-3 g-md-3 g-xl-3 g-xxl-3">
+            <article class="col">
+                <div class="bg-dark text-white Lingote_Ret d-flex justify-content-between p-3 rounded container-tags" draggable="true">
+                    <div class="img-remanente">
+                        <img src="img/silver.png" alt="">
+                    </div>
+                    <div class="line-separator"></div>
+                    <div class="body-tags">
+                        <h2 class="lingoteR"><strong></strong></h2>
+                        <label for="lingote">Lingote Ret.</label>
                     </div>
                 </div>
-                <div class="collapse show" id="productiones">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="production" class="table table-success table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">N° Control</th>
-                                        <th scope="col">Operador</th>
-                                        <th scope="col">Apellidos</th>
-                                        <th scope="col">Pieza</th>
-                                        <th scope="col">Aceptadas</th>
-                                        <th scope="col">Rechazadas</th>
-                                        <th scope="col">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">N° Control</th>
-                                        <th scope="col">Operador</th>
-                                        <th scope="col">Apellidos</th>
-                                        <th scope="col">Pieza</th>
-                                        <th scope="col">Aceptadas</th>
-                                        <th scope="col">Rechazadas</th>
-                                        <th scope="col">Acciones</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+            </article>
+            <article class="col">
+                <div class="bg-success text-white Goteo d-flex justify-content-between p-3 rounded container-tags" draggable="true">
+                    <div class="img-remanente">
+                        <img src="img/gotas.png" alt="">
+                    </div>
+                    <div class="line-separator"></div>
+                    <div class="body-tags">
+                        <h2 class="GoteoR"><strong></strong></h2>
+                        <label for="goteo">Goteo</label>
+                    </div>
+                </div>
+            </article>
+            <article class="col">
+                <div class="bg-primary text-white Pza_rechazada d-flex justify-content-between p-3 rounded container-tags" draggable="true">
+                    <div class="img-remanente">
+                        <img src="img/prohibition.png" alt="">
+                    </div>
+                    <div class="line-separator"></div>
+                    <div class="body-tags">
+                        <h2 class="pzaRechazada"><strong></strong></h2>
+                        <label for="rechazo">Pza rechazada</label>
+                    </div>
+                </div>
+            </article>
+            <article class="col">
+                <div class="bg-warning text-white Coladas d-flex justify-content-between p-3 rounded container-tags" draggable="true">
+                    <div class="img-remanente">
+                        <img src="img/placa.png" alt="">
+                    </div>
+                    <div class="line-separator"></div>
+                    <div class="body-tags">
+                        <h2 class="ColadaC"><strong></strong></h2>
+                        <label for="rechazo">Coladas</label>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="p-2 row">
+            <article class="p-2 col-12 col-sm-12 col-md-8">
+                <div class="card bg-dark text-white contenedor-tb-produccion">
+                    <div class="card-header">
+                        <h5 class="titulo-collaps fs-6">Producción de Fundición 1</h5>
+                        <div class="plus d-flex gap-2 d-md-flex justify-content-md-end">
+                            <span data-bs-toggle="tooltip" data-bs-placement="top" title="Registro de piezas elaboradas">
+                                <button type="button" class="btn btn-success btn-sm text-white" id="nuevoRegistro">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                            </span>
+                            <button class="btn btn-dark btn-sm" id="boton-b" onclick="changeicon('plus');" type="button" data-bs-toggle="collapse" data-bs-target="#productiones" aria-expanded="false" aria-controls="productiones">
+                                <i class="fa-solid fa-minus" id="plus"></i>
+                            </button>
                         </div>
                     </div>
-                    <div class="card-footer footer-modal-btn">
-                        <button type="button" class="btn btn-warning btn-sm btn-total-producido" data-bs-toggle="modal" data-bs-target="#totales">Pesos totales</button>
+                    <div class="collapse show" id="productiones">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="production" class="table table-success table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">N° Control</th>
+                                            <th scope="col">Operador</th>
+                                            <th scope="col">Apellidos</th>
+                                            <th scope="col">Pieza</th>
+                                            <th scope="col">Aceptadas</th>
+                                            <th scope="col">Rechazadas</th>
+                                            <th scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">N° Control</th>
+                                            <th scope="col">Operador</th>
+                                            <th scope="col">Apellidos</th>
+                                            <th scope="col">Pieza</th>
+                                            <th scope="col">Aceptadas</th>
+                                            <th scope="col">Rechazadas</th>
+                                            <th scope="col">Acciones</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer footer-modal-btn">
+                            <button type="button" class="btn btn-warning btn-sm btn-total-producido" data-bs-toggle="modal" data-bs-target="#totales">Pesos totales</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </article>
             <div class="modal fade" id="totales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-fullscreen-sm-down">
+                <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-header header-modal-kg bg-dark text-white" id="header-modal-retorno">
                             <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-hands-holding-circle"></i> Piezas Producidas</h5>
@@ -288,12 +263,12 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </div>
             </div>
-            <div class="registros-rem w-25">
+            <div class="registros-rem p-2 col-12 col-sm-12 col-md-4">
                 <div class="container-rem-prod">
                     <div class="card w-40 text-white bg-dark">
                         <div class="card-header">
-                            <h5 class="titulo-collaps">Remanente</h5>
-                            <div class="button-remanente-retorno d-grid gap-2 d-md-flex justify-content-md-end">
+                            <h5 class="titulo-collaps fs-6">Remanente</h5>
+                            <div class="button-remanente-retorno d-flex gap-2 d-md-flex justify-content-md-end">
                                 <span data-bs-toggle="tooltip" data-bs-placement="top" title="Registra el remanente">
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#retorno">
                                         <i class="fa-solid fa-arrows-rotate"></i> Retorno
@@ -308,28 +283,28 @@ if (isset($_SESSION['id_user'])) {
                             <form id="form-mat-prima">
                                 <div class="card-body">
                                     <section class="frm-mp container">
-                                        <div class="sm-2 row">
-                                            <div class="form-check col-auto">
+                                        <div class="mb-2 row">
+                                            <div class="form-check col">
                                                 <input class="form-check-input btnradio" type="radio" name="btnradio" id="radio1" value="Remanente">
                                                 <label class="form-check-label" for="radio1">Remanente</label>
                                             </div>
-                                            <div class="form-check col-auto">
+                                            <div class="form-check col">
                                                 <input class="form-check-input btnradio" type="radio" name="btnradio" id="radio2" value="Materia prima">
                                                 <label class="form-check-label" for="radio2">Materia Prima</label>
                                             </div>
                                         </div>
                                         <div class="mb-2 row">
-                                            <label for="selectRem" class="col-sm-4 col-form-label form-control-sm">Nombre:</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-select" id="selectRem" aria-label="Default select example">
+                                            <label for="selectRem" class="col-12 col-sm-4 col-form-label form-control-sm">Nombre:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <select class="form-select form-select-sm" id="selectRem" aria-label="Default select example">
                                                     <option selected>Choose..</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="mb-2 row">
-                                            <label for="cantidadMP" class="col-sm-4 col-form-label form-control-sm">Cantidad:</label>
-                                            <div class="col-sm-7">
-                                                <div class="input-group sm-3">
+                                            <label for="cantidadMP" class="col-12 col-sm-4 col-form-label form-control-sm">Cantidad:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <div class="input-group input-group-sm sm-3">
                                                     <input id="cantidadMP" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
                                                     <span class="input-group-text bg-dark text-white" id="basic-addon2">kg</span>
                                                 </div>
@@ -388,7 +363,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </section>
         <div class="modal fade" id="modalResgistros" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header bg-dark text-center" id="header-modal-retorno">
                         <h5 class="modal-title" id="exampleModalLabel"> Produccion</h5>
@@ -398,7 +373,7 @@ if (isset($_SESSION['id_user'])) {
                         <div class="modal-body row g-3">
                             <div class="col-md-2">
                                 <label for="lingote">N°</label>
-                                <input type="number" class="form-control form-control-sm" id="controlNumber" min="1" onchange="showInfoMoldeador();">
+                                <input type="number" class="form-control form-control-sm" id="controlNumber" min="1" onchange="showInfoMoldeador();" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="lingote">Nombre</label>
@@ -414,18 +389,18 @@ if (isset($_SESSION['id_user'])) {
                             </div>
                             <div class="col-md-4">
                                 <label for="placa">Pieza (clave)</label>
-                                <input type="text" class="form-control form-control-sm" placeholder="TRUD46" id="clavePieza">
+                                <input type="text" class="form-control form-control-sm" placeholder="TRUD46" id="clavePieza" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="placa">Aceptadas</label>
-                                <input type="number" class="form-control form-control-sm" id="aceptadas" min="0">
+                                <input type="number" class="form-control form-control-sm" id="aceptadas" min="0" required>
                             </div>
                             <div class="col-md-4">
                                 <label for="placa">Rechazadas</label>
-                                <input type="number" class="form-control form-control-sm" id="rechazadas" min="0">
+                                <input type="number" class="form-control form-control-sm" id="rechazadas" min="0" required>
                             </div>
                             <div hidden>
-                                <input type="number" class="form-control form-control-sm" id="idEmpleado" min="0" hidden>
+                                <input type="number" class="form-control form-control-sm" id="idEmpleado" min="0" hidden required>
                             </div>
                             <div><span id="alerta"></span></div>
                         </div>
@@ -436,27 +411,27 @@ if (isset($_SESSION['id_user'])) {
                 </div>
             </div>
         </div>
-        <section class="container-prod w-100">
-        <div class="card w-50 h-auto text-center bg-dark text-white">
-            <div class="card-header">
-                <i class="fa-solid fa-chart-column"></i>
-                Total de piezas elaboradas por Mes
-            </div>
-            <div class="card-body">
-                <div>
-                    <canvas id="chartProduccion"></canvas>
+        <section class="">
+            <article class="card h-auto text-center bg-dark text-white">
+                <header class="card-header">
+                    <i class="fa-solid fa-chart-column"></i>
+                    Total de piezas elaboradas por Mes
+                </header>
+                <div class="card-body">
+                    <div class="container">
+                        <canvas id="chartProduccion"></canvas>
+                    </div>
                 </div>
-            </div>
-            <div class="card-footer text-muted">
-                Hace 2 días
-            </div>
-        </div>
+                <footer class="card-footer text-muted">
+                    Hace 2 días
+                </footer>
+            </article>
         </section>
     </main>
     <footer class="bg-dark p-3 sticky-bottom">
-        <div class="container" >
-            <nav class="d-flex justify-content-center ">
-                <small class="text-white" >&#174;Todos los derechoz reservados &#169;2024 Aluxsa S.A de C.V </small>
+        <div class="container">
+            <nav class="d-flex justify-content-center">
+                <small class="text-white" >&#174;Todos los derechos reservados &#169;2024 Aluxsa S.A de C.V </small>
             </nav>
         </div>
     </footer>

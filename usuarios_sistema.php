@@ -64,12 +64,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </div>
     </nav>
-    <div class="container-principal">
-        <div class="container-btn-menu">
-            <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                <i class="fa-solid fa-bars"></i>
-            </a>
-        </div>
+    <header class="container-principal">
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <div class="container-perfil">
@@ -78,7 +73,7 @@ if (isset($_SESSION['id_user'])) {
                 </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="divicion"></div>
+            <hr class="bg-light my-2">
             <div class="offcanvas-body">
                 <ul class="menu-lista">
                     <li class="options"><a href="principal.php" class="links"><i class="fa-solid fa-house"></i> Inicio</a></li>
@@ -101,11 +96,17 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </ul>
             </div>
-            <footer class="footer">
+            <hr class="bg-light my-2">
+            <footer class="footer p-3">
                 <div class="container-perfil">
                 <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V</h5>
                 </div>
             </footer>
+        </div>
+        <div class="container-btn-menu">
+            <a class="btn btn-sm" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <i class="fa-solid fa-bars"></i>
+            </a>
         </div>
         <div class="bread-crum">
             <nav aria-label="breadcrumb">
@@ -120,7 +121,7 @@ if (isset($_SESSION['id_user'])) {
                 <i class="fa-solid fa-user-plus"></i>
             </button>
         </div>
-    </div>
+    </header>
     <main class="container p-3">
         <div class="table-responsive" id="tb_users">
             <table class="table table-success table-bordered" id="tbUserRole">

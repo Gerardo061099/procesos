@@ -269,14 +269,6 @@
     width: 20rem;
 }
 
-.registros-rem {
-    margin: 0;
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: flex;
-}
-
 .titulo-collaps {
     float: left;
 }
@@ -292,8 +284,6 @@
 
 .container-prod,
 .container-empleados{
-    width: 100%;
-    padding: 10px 15px;
     display: flex;
 }
 
@@ -348,18 +338,10 @@
     border-radius: 2px;
 }
 
-.container-tags {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 22%;
-    padding: 10px 10px;
-    border-radius: 5px;
-}
 .container-tags:hover{
-    -ms-transform: scale(1.1); /* IE 9 */
-  -webkit-transform: scale(1.1); /* Safari 3-8 */
-  transform: scale(1.1)
+    -ms-transform: scale(0.9); /* IE 9 */
+    -webkit-transform: scale(0.9); /* Safari 3-8 */
+    transform: scale(0.9)
 }
 
 .icon-info, .fa-bars-staggered {

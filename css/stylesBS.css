@@ -2,22 +2,39 @@
  No hay media queries para `xs` ya que este es el valor predeterminado en Bootstrap */
 
 /* Mis estilos */
-.profile-sm-user{
+.profile-sm-user {
     margin: 0;
 }
+
 .profile-md-user {
     margin: 0;
     display: none !important;
 }
 
-/*  Dispositivos pequeños (teléfonos horizontales, 576px y más) */
-@media (min-width: 576px) { 
-    
+.rounded-img-usuario {
+    box-sizing: border-box;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    z-index: 1;
 }
 
+.camera-add-picture {
+    position: absolute;
+    top: 85px;
+    left: 105px;
+    width: 20px;
+    height: 20px;
+}
+
+/*  Dispositivos pequeños (teléfonos horizontales, 576px y más) */
+@media (min-width: 576px) {}
+
 /*  Dispositivos medianos (tabletas, 768px y más) */
-@media (min-width: 768px) { 
-    .profile-sm-user{
+@media (min-width: 768px) {
+    .profile-sm-user {
         display: none;
     }
 
@@ -27,25 +44,39 @@
 }
 
 /*  Dispositivos grandes (escritorios, 992px y más) */
-@media (min-width: 992px) { 
-    
-}
+@media (min-width: 992px) {}
 
 /*  Dispositivos X-Large (escritorios grandes, 1200px y más) */
-@media (min-width: 1200px) { 
-    
-}
+@media (min-width: 1200px) {}
 
 /*  Dispositivos XX-Large (escritorios más grandes, 1400px y más) */
-@media (min-width: 1400px) { 
-    .w-xxl-25{
-        width: 25% !important; 
+@media (min-width: 1400px) {
+    .w-xxl-25 {
+        width: 25% !important;
     }
-    .w-xxl-75{
+
+    .w-xxl-75 {
         width: 75% !important;
     }
+
     .img-card-profile {
         width: 700px !important;
         height: auto !important;
     }
+
+    .rounded-img-usuario {
+        width: 100px;
+        height: 100px;
+        top: 20px;
+        left: 60px;
+    }
+
+    .camera-add-picture {
+        top: 100px;
+        left: 150px;
+        width: 20px;
+        height: 20px;
+    }
+
+
 }

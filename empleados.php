@@ -86,7 +86,7 @@ if (isset($_SESSION['id_user'])) {
                 </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="divicion"></div>
+            <hr class="bg-light my-2">
             <div class="offcanvas-body">
                 <ul class="menu-lista">
                     <li class="options"><a href="principal.php" class="links"><i class="fa-solid fa-house"></i> Inicio</a></li>
@@ -109,14 +109,15 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </ul>
             </div>
-            <footer class="footer">
+            <hr class="bg-light my-2">
+            <footer class="footer p-3">
                 <div class="container-perfil">
                     <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V &reg;</h5>
                 </div>
             </footer>
         </div>
     </div>
-    <main class="container-empleados d-flex justify-content-center w-100">
+    <main class="container d-flex justify-content-center w-100">
         <section class="container-table-empleados w-100">
             <div class="card bg-dark bg-gradient text-white container-card w-100">
                 <div class="card-header">
@@ -140,24 +141,24 @@ if (isset($_SESSION['id_user'])) {
                                                 <h6>Ingresa los datos personales del empleado</h6>
                                                 <div class="input-group input-group-sm mb-3">
                                                     <span class="input-group-text">Nombre y apellido</span>
-                                                    <input type="text" aria-label="First name" class="form-control form-control-sm bg-dark text-white" id="nombre_e">
-                                                    <input type="text" aria-label="Last name" class="form-control form-control-sm bg-dark text-white" id="apellidos_e">
+                                                    <input type="text" aria-label="First name" class="form-control form-control-sm bg-dark text-white" id="nombre_e" required>
+                                                    <input type="text" aria-label="Last name" class="form-control form-control-sm bg-dark text-white" id="apellidos_e" required>
                                                 </div>
                                                 <h6 >Número de empledo del recibo de nomina</h6>
                                                 <div class="input-group input-group-sm mb-3">
                                                     <span class="input-group-text" id="inputGroup-sizing-sm">N° Empleado</span>
-                                                    <input type="text" class="form-control bg-dark text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="num_e">
+                                                    <input type="text" class="form-control bg-dark text-white" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="num_e" required>
                                                 </div>
                                                 <h6>Indica si es Trabajador o Estudiante(Practicas Profesionales)</h6>
                                                 <div class="input-group input-group-sm mb-3">
                                                     <label class="input-group-text" for="select_empleados">Tipo empleado</label>
-                                                    <select class="form-select bg-dark text-white" id="select_empleados" name="select_empleados">
+                                                    <select class="form-select bg-dark text-white" id="select_empleados" name="select_empleados" required>
                                                     </select>
                                                 </div>
                                                 <h6>Area en el cual se desempeña laborando</h6>
                                                 <div class="input-group input-group-sm mb-3">
                                                     <label class="input-group-text" for="select_area">Area</label>
-                                                    <select class="form-select bg-dark text-white" id="select_area" name="select_area">
+                                                    <select class="form-select bg-dark text-white" id="select_area" name="select_area" required>
                                                     </select>
                                                 </div>
                                                 <div id="div_toggle"></div>

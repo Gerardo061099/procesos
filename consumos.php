@@ -67,11 +67,6 @@ if (isset($_SESSION['id_user'])) {
         </div>
     </nav>
     <div class="container-principal">
-        <div class="container-btn-menu">
-            <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                <i class="fa-solid fa-bars"></i>
-            </a>
-        </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <div class="container-perfil">
@@ -80,7 +75,7 @@ if (isset($_SESSION['id_user'])) {
                 </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="divicion"></div>
+            <hr class="bg-light my-2">
             <div class="offcanvas-body">
                 <ul class="menu-lista">
                     <li class="options"><a href="principal.php" class="links"><i class="fa-solid fa-house"></i> Inicio</a></li>
@@ -103,11 +98,17 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </ul>
             </div>
-            <footer class="footer">
+            <hr class="bg-light my-2">
+            <footer class="footer p-3">
                 <div class="container-perfil">
                     <h5 class="offcanvas-title" id="offcanvasExampleLabel">ALUXSA S.A de C.V &reg;</h5>
                 </div>
             </footer>
+        </div>
+        <div class="container-btn-menu">
+            <a class="btn btn-sm" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <i class="fa-solid fa-bars"></i>
+            </a>
         </div>
         <div class="bread-crum">
             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
@@ -182,6 +183,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </div>
     </main>
+    <br><br><br><br><br><br><br><br><br><br>
     <footer class="bg-dark p-3 sticky-bottom mt-5">
         <div class="container" >
             <nav class="d-flex justify-content-center ">
