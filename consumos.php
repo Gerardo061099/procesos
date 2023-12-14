@@ -5,7 +5,7 @@ include('php/conexion.php');
 if (isset($_SESSION['id_user'])) {
     $id = $_SESSION['id_user'];
     $ses_id = $_SESSION['id'];
-    $query = mysqli_query($conexion, "SELECT u.user AS user, r.nombre AS rolename FROM $tb_users u INNER JOIN $tb_roles r ON u.id_role = r.id WHERE u.id = $id");
+    $query = mysqli_query($conexion, "SELECT u.nombre AS nombre, u.apellidos AS apellidos, u.user AS user,u.img_perfil AS img_perfil,u.numero_empleado AS numero_empleado ,r.nombre AS rolename FROM $tb_users u INNER JOIN $tb_roles r ON u.id_role = r.id WHERE u.id = $id");
     $result = mysqli_fetch_array($query);
 
     $user = null;
@@ -27,11 +27,12 @@ if (isset($_SESSION['id_user'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     <link rel="icon" href="img/analytics-laptop-svgrepo-com.svg">
-    <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles2.css">
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
     <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.13.2/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles2.css">
+    <link rel="stylesheet" href="css/stylesBS.css">
 </head>
 
 <body class="c_principal">
@@ -42,15 +43,14 @@ if (isset($_SESSION['id_user'])) {
         <div class="px-3">
             <div class="dropdown" id="op-user">
                 <div>
-                    <img src="img/man.png" alt="" class="user-profile">
+                    <img src="<?= $user['img_perfil']; ?>" alt="" class="user-profile rounded-circle">
                 </div>
                 <p class="nombreUsuario d-none d-sm-block">
                     <span class="text-white" id="usuario">
                         <?php if (!empty($user)) : ?>
-                            <?= $user['user'];
-                            ?>
+                            <?= $user['user'];?>
                         <?php else : ?>
-                            Usuario no obtenido
+                            Usuario no obtenido     
                         <?php endif; ?>
                     </span>
                 </p>
@@ -58,20 +58,34 @@ if (isset($_SESSION['id_user'])) {
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </span>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-white" aria-labelledby="dropdownMenuButton1">
-                    <li><a href="perfil.php" class=" dropdown-item"><i class="fa-solid fa-user-tie"></i> Perfil</a></li>
                     <li><a href="#" class="dropdown-item"><i class="fa-solid fa-gear"></i> Configuracion</a></li>
                     <li><hr class="dropdown-divider"></li>
+                    <li><a href="perfil.php" class="dropdown-item">
+                            <p class="profile-sm-user">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <?php if (!empty($user)) : ?>
+                                    <?= $user['user'];?>
+                                <?php else : ?>
+                                    Usuario no obtenido  
+                                <?php endif; ?>
+                            </p>
+                            <p class="profile-md-user">
+                                <i class="fa-solid fa-user-tie"></i>
+                                Perfil
+                            </p>
+                        </a>
+                    </li>
                     <li><a href="php/close_session.php" class=" dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Cerra sesion</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container-principal">
+    <header class="container-principal">
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <div class="container-perfil">
-                    <img src="img/man.png" alt="" class="img-perfil">
-                    <h5 class="role-text" style="color: white;"><?= $user['rolename'] ?></h5>
+                    <img src="<?= $user['img_perfil']; ?>" alt="" class="img-perfil rounded-circle">
+                    <a class="role-text text-white text-decoration-none " href="perfil.php" role="button"><?= $user['rolename'] ?></a>
                 </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
@@ -118,7 +132,7 @@ if (isset($_SESSION['id_user'])) {
                 </ol>
             </nav>
         </div>
-    </div>
+    </header>
     <main class="px-3">
         <div class="card">
             <div class="card-header">
@@ -183,7 +197,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </div>
     </main>
-    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <footer class="bg-dark p-3 sticky-bottom mt-5">
         <div class="container" >
             <nav class="d-flex justify-content-center ">

@@ -5,7 +5,7 @@ include('php/conexion.php');
 if (isset($_SESSION['id_user'])) {
     $id = $_SESSION['id_user'];
     $ses_id = $_SESSION['id'];
-    $query = mysqli_query($conexion, "SELECT u.nombre AS nombre, u.apellidos AS apellidos, u.user AS user,u.img_perfil AS img_perfil, r.nombre AS rolename FROM $tb_users u INNER JOIN $tb_roles r ON u.id_role = r.id WHERE u.id = $id");
+    $query = mysqli_query($conexion, "SELECT u.nombre AS nombre, u.apellidos AS apellidos, u.user AS user,u.img_perfil AS img_perfil,u.numero_empleado AS numero_empleado ,r.nombre AS rolename FROM $tb_users u INNER JOIN $tb_roles r ON u.id_role = r.id WHERE u.id = $id");
     $result = mysqli_fetch_array($query);
 
     $user = null;
@@ -41,14 +41,14 @@ if (isset($_SESSION['id_user'])) {
         <div class="px-3">
             <div class="dropdown" id="op-user">
                 <div>
-                    <img src="img/man.png" alt="" class="user-profile">
+                    <img src="<?= $user['img_perfil']; ?>" alt="" class="user-profile rounded-circle">
                 </div>
-                <p class="nombreUsuario d-none d-sm-block" >
+                <p class="nombreUsuario d-none d-sm-block">
                     <span class="text-white" id="usuario">
                         <?php if (!empty($user)) : ?>
                             <?= $user['user'];?>
                         <?php else : ?>
-                            Usuario no obtenido
+                            Usuario no obtenido     
                         <?php endif; ?>
                     </span>
                 </p>
@@ -58,15 +58,14 @@ if (isset($_SESSION['id_user'])) {
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-white" aria-labelledby="dropdownMenuButton1">
                     <li><a href="#" class="dropdown-item"><i class="fa-solid fa-gear"></i> Configuracion</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li>
-                        <a href="perfil.php" class=" dropdown-item">
+                    <li><a href="perfil.php" class="dropdown-item active">
                             <p class="profile-sm-user">
-                                <i class="fa-solid fa-user-tie"></i>
-                                <?php if (!empty($user)) : ?>
-                                        <?= $user['user'];?>
-                                    <?php else : ?>
-                                        Usuario no obtenido  
-                                    <?php endif; ?>
+                            <i class="fa-solid fa-user-tie"></i>
+                            <?php if (!empty($user)) : ?>
+                                    <?= $user['user'];?>
+                                <?php else : ?>
+                                    Usuario no obtenido  
+                                <?php endif; ?>
                             </p>
                             <p class="profile-md-user">
                                 <i class="fa-solid fa-user-tie"></i>
@@ -79,19 +78,19 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </div>
     </nav>
-    <div class="container-principal">
+    <header class="container-principal">
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <div class="container-perfil">
-                    <img src="img/man.png" alt="" class="img-perfil">
-                    <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
+                    <img src="<?= $user['img_perfil']; ?>" alt="" class="img-perfil rounded-circle">
+                    <a class="role-text text-white text-decoration-none " href="#" role="button"><?= $user['rolename'] ?></a>
                 </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <hr class="bg-light my-2">
             <div class="offcanvas-body">
                 <ul class="menu-lista">
-                    <li class="options option-active"><a href="principal.php" class="links"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                    <li class="options"><a href="principal.php" class="links"><i class="fa-solid fa-house"></i> Inicio</a></li>
                     <li class="options"><a href="usuarios_sistema.php" class="links"><i class="fa-solid fa-users-gear"></i> Administrar usuarios</a></li>
                     <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle');"><i class="fa-solid fa-list-check"></i> Gestion de produccion <i class="fa-solid fa-angle-down" id="icon-angle"></i></a></li>
                     <div class="collapse sub-menu" id="sub-menu">
@@ -126,7 +125,7 @@ if (isset($_SESSION['id_user'])) {
         <div class="text-dash">
             <h4 id="text">Tu perfil de usuario</h4>
         </div>
-    </div>
+    </header>
     <main class="container py-3">
         <section class="w-100">
             <div class="card mb-3">
@@ -143,24 +142,24 @@ if (isset($_SESSION['id_user'])) {
             <!-- Modal Principal -->
             <div class="modal fade" id="modal-acciones" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-black" id="exampleModalToggleLabel">Elige una opcion</h5>
+                    <div class="modal-content bg-dark">
+                        <div class="modal-header text-white">
+                            <h5 class="modal-title" id="exampleModalToggleLabel">Elige una opcion</h5>
                             <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body row">
-                            <button class="btn btn-dark mb-2 col-12" data-bs-target="#add-picture" data-bs-toggle="modal" data-bs-dismiss="modal"><i class="fa-regular fa-image"></i> Agregar una foto a tu perfil</button>
-                            <button class="btn btn-dark mb-2 col-12" data-bs-target="#update-picture" data-bs-toggle="modal" data-bs-dismiss="modal"><i class="fa-regular fa-images"></i> Actualizar foto de perfil</button>
+                            <button class="btn btn-primary mb-2 col-12" data-bs-target="#add-picture" data-bs-toggle="modal" data-bs-dismiss="modal"><i class="fa-regular fa-image"></i> Agregar una foto a tu perfil</button>
+                            <button class="btn btn-primary mb-2 col-12" data-bs-target="#update-picture" data-bs-toggle="modal" data-bs-dismiss="modal"><i class="fa-regular fa-images"></i> Actualizar foto de perfil</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Modales de navegacion -->
-            <div class="modal fade" id="add-picture" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal fade" id="add-picture" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content bg-dark">
                         <div class="modal-header">
-                            <h5 class="modal-title text-dark" id="exampleModalToggleLabel2">Agrega una foto a tu perfil</h5>
+                            <h5 class="modal-title" id="exampleModalToggleLabel2">Agrega una foto a tu perfil</h5>
                         </div>
                         <div class="modal-body">
                             <div class="input-group mb-3">
@@ -175,14 +174,14 @@ if (isset($_SESSION['id_user'])) {
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="update-picture" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal fade" id="update-picture" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content bg-dark text-white">
                         <div class="modal-header">
-                            <h5 class="modal-title text-dark" id="exampleModalToggleLabel2">Actualiza tu foto de perfil</h5>
+                            <h5 class="modal-title " id="exampleModalToggleLabel2">Actualiza tu foto de perfil</h5>
                         </div>
                         <div class="modal-body">
-                            Hide this modal and show the first with the button below.
+                            Inserta la imagen que quieres poner de perfil.
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary" data-bs-target="#modal-acciones" data-bs-toggle="modal" data-bs-dismiss="modal"><i class="fa-solid fa-arrow-left"></i> Back to first</button>
@@ -193,23 +192,48 @@ if (isset($_SESSION['id_user'])) {
             <!-- Fin de los Modales -->
         </section>
         <h5 class="card-title text-start mt-5"><?= $user['nombre'].' '.$user['apellidos'];?> <a href="#"><i class="fa-solid fa-pencil"></i></a></h5> 
-        <p class="card-text"><small class="text-muted"><?= $user['user'];?></small></p>
+        <p class="card-text"><small class="text-muted"><i><?= $user['user'];?></i></small></p>
         <div class="card text-center">
             <header class="card-header">
-                Informacion de tu usuario:
+                <i>Informacion de tu usuario:</i>
             </header>
             <article class="card-body">
+                <section class="text-start p-3">
+                    <h6>Datos de tu usuario</h6>
+                    <p><b>Nombre:</b> <span><?= $user['nombre'].' '.$user['apellidos'];?></span></p>
+                    <p><b>Numero de empleado:</b> <span class="badge bg-success"><?= $user['numero_empleado'] ?></span></p>
+                    <p><b>Usuario:</b> <span class="badge bg-primary"><?= $user['user'] ?></span></p>
+                    <p><b>Role de usuario:</b> <span class="badge bg-success"><?= $user['rolename'] ?></span></p>
+                </section>
+                <hr>
+                <h4>Tabla de usuarios</h4>
+                <div class="table-responsive" id="tb_users">
+                    <table class="table table-success table-bordered" id="tbUserRole">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">N° Control</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Registro</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
                 <span class="card-title badge bg-dark"><b>Role</b></span>
                 <span class="card-title badge bg-dark"><b>Permisos</b></span>
                 <span class="card-title badge bg-dark"><b>Modulos</b></span>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text">Este usuario tiene todos los privilegios para el manejo del sistema, por lo tanto los demas usuarios no podran visualizarte.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </article>
         </div>
         <aside class="">
         </aside>
     </main>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <footer class="bg-dark p-3 sticky-bottom mt-5">
         <div class="container">
             <nav class="d-flex justify-content-center ">
@@ -222,5 +246,7 @@ if (isset($_SESSION['id_user'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js" integrity="sha384-q9CRHqZndzlxGLOj+xrdLDJa9ittGte1NksRmgJKeCV9DrM7Kz868XYqsKWPpAmn" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <script src="js/usersTable.js"></script>
 </body>
 </html>

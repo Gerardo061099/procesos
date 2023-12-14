@@ -5,7 +5,7 @@ include('php/conexion.php');
 if (isset($_SESSION['id_user'])) {
     $id = $_SESSION['id_user'];
     $ses_id = $_SESSION['id'];
-    $query = mysqli_query($conexion, "SELECT u.user AS user, r.nombre AS rolename FROM $tb_users u INNER JOIN $tb_roles r ON u.id_role = r.id WHERE u.id = $id");
+    $query = mysqli_query($conexion, "SELECT u.nombre AS nombre, u.apellidos AS apellidos, u.user AS user,u.img_perfil AS img_perfil,u.numero_empleado AS numero_empleado ,r.nombre AS rolename FROM $tb_users u INNER JOIN $tb_roles r ON u.id_role = r.id WHERE u.id = $id");
     $result = mysqli_fetch_array($query);
 
     $user = null;
@@ -43,7 +43,7 @@ if (isset($_SESSION['id_user'])) {
         <div class="px-3">
             <div class="dropdown" id="op-user">
                 <div>
-                    <img src="img/man.png" alt="" class="user-profile">
+                    <img src="<?= $user['img_perfil']; ?>" alt="" class="user-profile rounded-circle">
                 </div>
                 <p class="nombreUsuario d-none d-sm-block">
                     <span class="text-white" id="usuario">
@@ -84,8 +84,8 @@ if (isset($_SESSION['id_user'])) {
         <aside class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <header class="offcanvas-header">
                 <div class="container-perfil">
-                    <img src="img/man.png" alt="" class="img-perfil">
-                    <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
+                    <img src="<?= $user['img_perfil']; ?>" alt="" class="img-perfil rounded-circle">
+                    <a class="role-text text-white text-decoration-none " href="perfil.php" role="button"><?= $user['rolename'] ?></a>
                 </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </header>
@@ -143,7 +143,7 @@ if (isset($_SESSION['id_user'])) {
                 <section class="collapse show" id="tablaProduccion">
                     <div class="card-body cuerpo-card">
                         <div class="table-responsive">
-                            <table id="tableProduccion" class="table table-striped tabla-prod-today display responsive nowrap">
+                            <table id="tableProduccion" class="table table-striped tabla-prod-today display">
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col">#</th>
@@ -156,7 +156,7 @@ if (isset($_SESSION['id_user'])) {
                                 </thead>
                                 <tbody>
                                 </tbody>
-                                <tfoot>
+                                <tfoot class="table-dark">
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nombre de operador</th>
@@ -252,6 +252,7 @@ if (isset($_SESSION['id_user'])) {
             </div>
         </aside>
     </main>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <footer class="bg-dark p-3 sticky-bottom">
         <div class="container" >
             <nav class="d-flex justify-content-center ">

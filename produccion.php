@@ -4,7 +4,7 @@ include('php/conexion.php');
 
 if (isset($_SESSION['id_user'])) {
     $id = $_SESSION['id_user'];
-    $query = mysqli_query($conexion, "SELECT u.user AS user, r.nombre AS rolename FROM $tb_users u INNER JOIN $tb_roles r ON u.id_role = r.id WHERE u.id = $id");
+    $query = mysqli_query($conexion, "SELECT u.nombre AS nombre, u.apellidos AS apellidos, u.user AS user,u.img_perfil AS img_perfil,u.numero_empleado AS numero_empleado ,r.nombre AS rolename FROM $tb_users u INNER JOIN $tb_roles r ON u.id_role = r.id WHERE u.id = $id");
     $result = mysqli_fetch_array($query);
 
     $user = null;
@@ -31,6 +31,7 @@ if (isset($_SESSION['id_user'])) {
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/styles2.css">
+    <link rel="stylesheet" href="css/stylesBS.css">
 </head>
 
 <body class="c_principal">
@@ -41,7 +42,7 @@ if (isset($_SESSION['id_user'])) {
         <div class="px-3">
             <div class="dropdown" id="op-user">
                 <div>
-                    <img src="img/man.png" alt="" class="user-profile">
+                    <img src="<?= $user['img_perfil']; ?>" alt="" class="user-profile rounded-circle">
                 </div>
                 <p class="nombreUsuario d-none d-sm-block"><span class="text-white" id="usuario">
                         <?php if (!empty($user)) : ?>
@@ -67,8 +68,8 @@ if (isset($_SESSION['id_user'])) {
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <div class="container-perfil">
-                    <img src="img/man.png" alt="" class="img-perfil">
-                    <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
+                    <img src="<?= $user['img_perfil']; ?>" alt="" class="img-perfil rounded-circle">
+                    <a class="role-text text-white text-decoration-none " href="perfil.php" role="button"><?= $user['rolename'] ?></a>
                 </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
@@ -417,11 +418,19 @@ if (isset($_SESSION['id_user'])) {
                     <i class="fa-solid fa-chart-column"></i>
                     Total de piezas elaboradas por Mes
                 </header>
-                <div class="card-body">
-                    <div class="container">
+                <section class="card-body row">
+                    <nav class="filter-fecha col-5">
+                        <select class="form-select form-select-sm bg-dark text-white" aria-label="Default select example">
+                            <option selected>Selecciona otra fecha</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </nav>
+                    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
                         <canvas id="chartProduccion"></canvas>
                     </div>
-                </div>
+                </section>
                 <footer class="card-footer text-muted">
                     Hace 2 días
                 </footer>

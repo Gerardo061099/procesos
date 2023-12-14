@@ -4,7 +4,7 @@ include('php/conexion.php');
 
 if (isset($_SESSION['id_user'])) {
     $id = $_SESSION['id_user'];
-    $query = mysqli_query($conexion, "SELECT u.user AS user, r.nombre AS rolename FROM $tb_users u INNER JOIN $tb_roles r ON u.id_role = r.id WHERE u.id = $id");
+    $query = mysqli_query($conexion, "SELECT u.nombre AS nombre, u.apellidos AS apellidos, u.user AS user,u.img_perfil AS img_perfil,u.numero_empleado AS numero_empleado ,r.nombre AS rolename FROM $tb_users u INNER JOIN $tb_roles r ON u.id_role = r.id WHERE u.id = $id");
     $result = mysqli_fetch_array($query);
 
     $user = null;
@@ -26,11 +26,12 @@ if (isset($_SESSION['id_user'])) {
     <title>Gestion de la produccion</title>
     <link rel="icon" href="img/analytics-laptop-svgrepo-com.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/styles2.css">
     <link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.13.2/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles2.css">
+    <link rel="stylesheet" href="css/stylesBS.css">
 </head>
 
 <body class="c_principal">
@@ -41,32 +42,46 @@ if (isset($_SESSION['id_user'])) {
         <div class="px-3">
             <div class="dropdown" id="op-user">
                 <div>
-                    <img src="img/man.png" alt="" class="user-profile">
+                    <img src="<?= $user['img_perfil']; ?>" alt="" class="user-profile rounded-circle">
                 </div>
                 <p class="nombreUsuario d-none d-sm-block">
                     <span class="text-white" id="usuario">
                         <?php if (!empty($user)) : ?>
-                            <?= $user['user'];
-                            ?>
+                            <?= $user['user'];?>
                         <?php else : ?>
-                            Usuario no obtenido
+                            Usuario no obtenido     
                         <?php endif; ?>
-                    </span></p>
+                    </span>
+                </p>
                 <span class="btn btn-dark btn-sm" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-ellipsis-vertical fa-bounce"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
                 </span>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-white" aria-labelledby="dropdownMenuButton1">
-                    <li><a href="perfil.php" class=" dropdown-item"><i class="fa-solid fa-user-tie"></i> Perfil</a></li>
                     <li><a href="#" class="dropdown-item"><i class="fa-solid fa-gear"></i> Configuracion</a></li>
                     <li><hr class="dropdown-divider"></li>
+                    <li><a href="perfil.php" class="dropdown-item">
+                            <p class="profile-sm-user">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <?php if (!empty($user)) : ?>
+                                    <?= $user['user'];?>
+                                <?php else : ?>
+                                    Usuario no obtenido  
+                                <?php endif; ?>
+                            </p>
+                            <p class="profile-md-user">
+                                <i class="fa-solid fa-user-tie"></i>
+                                Perfil
+                            </p>
+                        </a>
+                    </li>
                     <li><a href="php/close_session.php" class=" dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Cerra sesion</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container-principal">
+    <header class="container-principal">
         <div class="container-btn-menu">
-            <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            <a class="btn btn-sm" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                 <i class="fa-solid fa-bars fa-beat"></i>
             </a>
         </div>
@@ -81,8 +96,8 @@ if (isset($_SESSION['id_user'])) {
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <div class="container-perfil">
-                    <img src="img/man.png" alt="" class="img-perfil">
-                    <h6 class="role-text" style="color: white;"><?= $user['rolename'] ?></h6>
+                    <img src="<?= $user['img_perfil']; ?>" alt="" class="img-perfil rounded-circle">
+                    <a class="role-text text-white text-decoration-none " href="perfil.php" role="button"><?= $user['rolename'] ?></a>
                 </div>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
@@ -92,9 +107,9 @@ if (isset($_SESSION['id_user'])) {
                     <li class="options"><a href="principal.php" class="links"><i class="fa-solid fa-house"></i> Inicio</a></li>
                     <li class="options"><a href="usuarios_sistema.php" class="links"><i class="fa-solid fa-users-gear"></i> Administrar usuarios</a></li>
                     <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle');"><i class="fa-solid fa-list-check"></i> Gestion de produccion <i class="fa-solid fa-angle-up" id="icon-angle"></i></a></li>
-                    <div class="collapse show sub-menu" id="sub-menu">
+                    <div class="collapse sub-menu" id="sub-menu">
                         <ul class="menu-lista">
-                            <li class="options option-active-sub-me"><a href="produccion.php" class="links"><i class="fa-solid fa-industry"></i> Producción</a></li>
+                            <li class="options"><a href="produccion.php" class="links"><i class="fa-solid fa-industry"></i> Producción</a></li>
                             <li class="options"><a href="consumos.php" class="links"><i class="fa-solid fa-cash-register"></i> Consumos</a></li>
                             <li class="options"><a href="#" class="links"><i class="fa-solid fa-dollar-sign"></i> Costos de producción</a></li>
                         </ul>
@@ -102,9 +117,9 @@ if (isset($_SESSION['id_user'])) {
                     <li class="options"><a href="#" class="links"><i class="fa-solid fa-square-poll-horizontal"></i> Resultados de producción</a></li>
                     <li class="options"><a href="nomina.php" class="links"><i class="fa-solid fa-file-invoice-dollar"></i> Nominas</a></li>
                     <li class="options"><a class="links" data-bs-toggle="collapse" href="#sub-menu2" role="button" aria-expanded="false" aria-controls="collapseExample" onclick="changeicon('icon-angle2');"><i class="fa-solid fa-people-group"></i> Empleados <i class="fa-solid fa-angle-down" id="icon-angle2"></i></a></li>
-                    <div class="collapse sub-menu" id="sub-menu2">
+                    <div class="collapse show sub-menu" id="sub-menu2">
                         <ul class="menu-lista">
-                            <li class="options"><a href="#" class="links"><i class="fa-solid fa-chart-column"></i> Productividad</a></li>
+                            <li class="options option-active-sub-me"><a href="#" class="links"><i class="fa-solid fa-chart-column"></i> Productividad</a></li>
                         </ul>
                     </div>
                 </ul>
@@ -116,7 +131,7 @@ if (isset($_SESSION['id_user'])) {
                 </div>
             </footer>
         </div>
-    </div>
+    </header>
     <main class="container d-flex justify-content-center w-100">
         <section class="container-table-empleados w-100">
             <div class="card bg-dark bg-gradient text-white container-card w-100">
